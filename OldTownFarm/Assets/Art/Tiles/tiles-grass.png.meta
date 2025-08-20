@@ -1,13 +1,10 @@
 fileFormatVersion: 2
-guid: 11bb606dfc3c0c242811bde99df8baf7
+guid: 47cae850b33d9a34ab87fc6103a688de
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -6360384565893686198
-    second: farmer-walk-right_0
-  - first:
-      213: 1690371551668318303
-    second: farmer-walk-right_1
+      213: 1278896887031042992
+    second: tiles-grass_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -103,7 +100,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: farmer-walk-right_0
+      name: tiles-grass_0
       rect:
         serializedVersion: 2
         x: 0
@@ -118,14 +115,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: a4c9703afef5bb7a0800000000000000
-      internalID: -6360384565893686198
+      spriteID: 0b396df51fd8fb110800000000000000
+      internalID: 1278896887031042992
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: farmer-walk-right_1
+      name: tiles-grass_1
       rect:
         serializedVersion: 2
         x: 16
@@ -138,10 +135,76 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: f50bd9368f7657710800000000000000
-      internalID: 1690371551668318303
+      spriteID: 33ce7c1971781a84d86568f4e80e168f
+      internalID: -1391739865
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tiles-grass_2
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d7ae9dd95363bce4fbd038171cc02b3f
+      internalID: 1022669350
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tiles-grass_3
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3dbee671c5942a84a83f5869fdfbb903
+      internalID: -329075586
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tiles-grass_4
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4f14824e37625304daa6729c6eb9c0b0
+      internalID: 48308392
       vertices: []
       indices: 
       edges: []
@@ -150,7 +213,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 67b65228b76667246a4a4c9047c52279
+    spriteID: 8e79af1d412a248468aad963bfed8ea6
     internalID: 0
     vertices: []
     indices: 
@@ -162,8 +225,11 @@ TextureImporter:
       - key: SpriteEditor.SliceSettings
         value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":16.0,"y":16.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      farmer-walk-right_0: -6360384565893686198
-      farmer-walk-right_1: 1690371551668318303
+      tiles-grass_0: 1278896887031042992
+      tiles-grass_1: -1391739865
+      tiles-grass_2: 1022669350
+      tiles-grass_3: -329075586
+      tiles-grass_4: 48308392
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
