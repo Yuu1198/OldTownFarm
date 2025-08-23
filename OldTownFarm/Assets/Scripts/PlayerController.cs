@@ -4,7 +4,8 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
-    public float moveSpeed;
+    public float slowerMoveSpeed;
+    public float fasterMoveSpeed;
     public Rigidbody2D rb2d;
     public PlayerInputActions playerControls;
     public bool moveRight;
@@ -18,8 +19,10 @@ public class PlayerController : MonoBehaviour
     public GameObject faceDown;
     public Animator playerAnimations;
 
+    public float moveSpeed;
     private Vector2 moveDirection;
     private InputAction move;
+    private InputAction moveFaster;
 
     private void Awake() {
         playerControls = new PlayerInputActions();
@@ -28,10 +31,15 @@ public class PlayerController : MonoBehaviour
     private void OnEnable() {
         move = playerControls.Player.Move;
         move.Enable();
+
+        moveFaster = playerControls.Player.MoveFaster;
+        moveFaster.Enable();
+        moveFaster.performed += MoveFaster;
     }
 
     private void OnDisable() {
         move.Disable();
+        moveFaster.Disable();
     }
 
     // Update is called once per frame
@@ -93,6 +101,17 @@ public class PlayerController : MonoBehaviour
         }
         if (moveDirection.y == 0 && moveDirection.x == 0) {
             playerAnimations.Play("PlayerIdle");
+        }
+    }
+
+    private void MoveFaster(InputAction.CallbackContext context) {
+        // Changes move speed when button is pressed
+        if (moveSpeed == slowerMoveSpeed) {
+            moveSpeed = fasterMoveSpeed;
+            playerAnimations.speed *= 2;
+        }else {
+            moveSpeed = slowerMoveSpeed;
+            playerAnimations.speed = 1;
         }
     }
 }

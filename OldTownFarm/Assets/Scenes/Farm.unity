@@ -585,7 +585,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea11af4ad3b82d240a89ae429d9ce34c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  moveSpeed: 2
+  slowerMoveSpeed: 2
+  fasterMoveSpeed: 4
   rb2d: {fileID: 714671768}
   moveRight: 0
   moveLeft: 0
@@ -597,6 +598,7 @@ MonoBehaviour:
   faceUp: {fileID: 1046696144}
   faceDown: {fileID: 61477688}
   playerAnimations: {fileID: 714671767}
+  moveSpeed: 2
 --- !u!212 &714671766
 SpriteRenderer:
   m_ObjectHideFlags: 0

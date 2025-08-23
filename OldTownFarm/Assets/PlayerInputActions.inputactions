@@ -28,7 +28,16 @@
                     "name": "Fire",
                     "type": "Button",
                     "id": "d61b6c2f-f089-4263-8b25-bce4dd847b83",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "MoveFaster",
+                    "type": "Button",
+                    "id": "e14f4be0-8fd7-45f5-ac3e-fa23e1c0e1c8",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -252,6 +261,17 @@
                     "processors": "",
                     "groups": "XR",
                     "action": "Fire",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "0e78c0fa-4695-4521-83c7-03be6323efe5",
+                    "path": "<Keyboard>/shift",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "MoveFaster",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
