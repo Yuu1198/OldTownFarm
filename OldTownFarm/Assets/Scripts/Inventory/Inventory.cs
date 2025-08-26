@@ -9,6 +9,7 @@ public class Inventory {
         public CollectableType type;
         public int count;
         public int maxAllowed;
+        public Sprite icon;
 
         public Slot() {
             type = CollectableType.none;
@@ -24,8 +25,9 @@ public class Inventory {
             }
         }
 
-        public void AddItem(CollectableType type) {
-            this.type = type;
+        public void AddItem(Collectable item) {
+            this.type = item.type;
+            this.icon = item.icon;
             count++;
         }
     }
@@ -40,11 +42,11 @@ public class Inventory {
         }
     }
 
-    public void Add(CollectableType typeToAdd) {
+    public void Add(Collectable item) {
         // Find Slot with same type of Collectable
         foreach (Slot slot in slots) {
-            if (slot.type == typeToAdd && slot.CanAddItem()) {
-                slot.AddItem(typeToAdd);
+            if (slot.type == item.type && slot.CanAddItem()) {
+                slot.AddItem(item);
                 return;
             }
         }
@@ -52,7 +54,7 @@ public class Inventory {
         // Add Collectable to empty slot
         foreach (Slot slot in slots) {
             if (slot.type == CollectableType.none) {
-                slot.AddItem(typeToAdd);
+                slot.AddItem(item);
                 return;
             }
         }
