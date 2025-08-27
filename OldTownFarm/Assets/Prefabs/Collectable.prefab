@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7114761221237076418}
   - component: {fileID: 6373224604599764451}
   - component: {fileID: 2620737993677130405}
+  - component: {fileID: 1109518836958464437}
   m_Layer: 0
   m_Name: Collectable
   m_TagString: Untagged
@@ -151,9 +152,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab43feebb372d5a4da0e143a8c8d88d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Collectable
-  type: 1
-  icon: {fileID: 21300000, guid: ec56ac3d5e695914da9a342507968a46, type: 3}
-  rb2d: {fileID: 0}
 --- !u!50 &2620737993677130405
 Rigidbody2D:
   serializedVersion: 5
@@ -181,3 +179,17 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &1109518836958464437
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6093528234468579406}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5450d390735c9424aa58fbff3727c643, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Item
+  data: {fileID: 11400000, guid: daccb6d11b6fc324faee0aff8842ce4c, type: 2}
+  rb2d: {fileID: 0}

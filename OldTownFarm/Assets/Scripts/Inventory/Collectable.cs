@@ -1,29 +1,22 @@
 using UnityEngine;
 
+[RequireComponent (typeof(Item))]
 public class Collectable : MonoBehaviour
 {
-    public CollectableType type;
-    public Sprite icon;
-    public Rigidbody2D rb2d;
-
-    private void Awake()
+    private void OnTriggerEnter2D(Collider2D collision) 
     {
-        rb2d = GetComponent<Rigidbody2D>();
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision) {
         PlayerController player = collision.GetComponent<PlayerController>();
 
         // Player collects this Collectable and it gets added to Inventory
-        if (player) {
-            player.inventory.Add(this);
-            Destroy(this.gameObject);
+        if (player) 
+        {
+            Item item = GetComponent<Item>();
+
+            if (item != null)
+            {
+                player.inventory.Add(item);
+                Destroy(this.gameObject);
+            }
         }
     }
-}
-
-// All possible Types of an Collectable
-public enum CollectableType {
-    none,
-    carrotSeed
 }

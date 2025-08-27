@@ -21394,8 +21394,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34404dc5d0ae2354d87e91f76e8b33d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ItemManager
-  collectableItems:
-  - {fileID: 6373224604599764451, guid: 93e74acc4e9db2e40b22b4a9726803bf, type: 3}
+  items:
+  - {fileID: 1109518836958464437, guid: 93e74acc4e9db2e40b22b4a9726803bf, type: 3}
 --- !u!114 &2108039479
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21626,7 +21626,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Inventory_UI
   inventoryPanel: {fileID: 1961744747}
-  player: {fileID: 0}
+  player: {fileID: 714671765}
   slots:
   - {fileID: 963260732}
   - {fileID: 1712473317}

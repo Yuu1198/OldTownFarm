@@ -171,7 +171,7 @@ public class PlayerController : MonoBehaviour
     }
 
     // Drop Item in world (PLACEHOLDER)
-    public void DropItem(Collectable item)
+    public void DropItem(Item item)
     {
         Vector3 spawnLocation = transform.position;
 
@@ -179,7 +179,7 @@ public class PlayerController : MonoBehaviour
         Vector3 spawnOffset = Random.insideUnitCircle * 1.5f;
 
         // Spawn Item
-        Collectable droppedItem = Instantiate(item, spawnLocation + spawnOffset, Quaternion.identity);
+        Item droppedItem = Instantiate(item, spawnLocation + spawnOffset, Quaternion.identity);
         // Make it mory fancy
         droppedItem.rb2d.AddForce(spawnOffset * .2f, ForceMode2D.Impulse);
     }
