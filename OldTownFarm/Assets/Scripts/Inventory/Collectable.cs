@@ -12,7 +12,7 @@ public class Collectable : MonoBehaviour
     }
 
     private void OnTriggerEnter2D(Collider2D collision) {
-        Player player = collision.GetComponent<Player>();
+        PlayerController player = collision.GetComponent<PlayerController>();
 
         // Player collects this Collectable and it gets added to Inventory
         if (player) {

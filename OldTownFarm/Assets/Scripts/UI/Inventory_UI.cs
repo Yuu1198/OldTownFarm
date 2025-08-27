@@ -7,7 +7,7 @@ public class Inventory_UI : MonoBehaviour
 {
     public GameObject inventoryPanel;
     public PlayerInputActions playerControls;
-    public Player player;
+    public PlayerController player;
     public List<Slots_UI> slots = new List<Slots_UI>();
 
     private InputAction openInventory;

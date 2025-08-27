@@ -5,6 +5,7 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
 
     public ItemManager itemManager;
+    public TileManager tileManager;
 
     private void Awake()
     {
@@ -20,5 +21,6 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(this.gameObject); // Dont destroy when new scene is opened
 
         itemManager = GetComponent<ItemManager>();
+        tileManager = GetComponent<TileManager>();
     }
 }
