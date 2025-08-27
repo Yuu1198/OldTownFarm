@@ -3,24 +3,31 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class Inventory {
+public class Inventory 
+{
     [System.Serializable]
-    public class Slot {
+    public class Slot 
+    {
         public CollectableType type;
         public int count;
         public int maxAllowed;
         public Sprite icon;
 
-        public Slot() {
+        public Slot() 
+        {
             type = CollectableType.none;
             count = 0;
             maxAllowed = 99;
         }
 
-        public bool CanAddItem() {
-            if (count < maxAllowed) {
+        public bool CanAddItem() 
+        {
+            if (count < maxAllowed) 
+            {
                 return true;
-            } else {
+            } 
+            else 
+            {
                 return false;
             }
         }
@@ -30,33 +37,61 @@ public class Inventory {
             this.icon = item.icon;
             count++;
         }
+
+        public void RemoveItem() 
+        {
+            // Remove Item from Slot if at least one Item is in it
+            if (count > 0)
+            { 
+                count--;
+
+                // Slot is empty
+                if (count == 0) 
+                {
+                    icon = null;
+                    type = CollectableType.none;
+                }
+            }
+        }
     }
 
     public List<Slot> slots = new List<Slot>();
 
-    public Inventory(int numSlots) {
+    public Inventory(int numSlots) 
+    {
         // Add slots to inventory
-        for (int i = 0; i < numSlots; i++) {
+        for (int i = 0; i < numSlots; i++) 
+        {
             Slot slot = new Slot();
             slots.Add(slot);
         }
     }
 
-    public void Add(Collectable item) {
+    public void Add(Collectable item) 
+    {
         // Find Slot with same type of Collectable
-        foreach (Slot slot in slots) {
-            if (slot.type == item.type && slot.CanAddItem()) {
+        foreach (Slot slot in slots) 
+        {
+            if (slot.type == item.type && slot.CanAddItem()) 
+            {
                 slot.AddItem(item);
                 return;
             }
         }
         // No same type of Slot found
         // Add Collectable to empty slot
-        foreach (Slot slot in slots) {
-            if (slot.type == CollectableType.none) {
+        foreach (Slot slot in slots) 
+        {
+            if (slot.type == CollectableType.none) 
+            {
                 slot.AddItem(item);
                 return;
             }
         }
+    }
+
+    public void Remove(int index) 
+    {
+        slots[index].RemoveItem();
     }
 }

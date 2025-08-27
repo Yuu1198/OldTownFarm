@@ -1,0 +1,36 @@
+using System.Collections.Generic;
+using UnityEngine;
+
+public class ItemManager : MonoBehaviour
+{
+    public Collectable[] collectableItems;
+    private Dictionary<CollectableType, Collectable> collectableItemsDict = new Dictionary<CollectableType, Collectable>();
+
+    private void Awake()
+    {
+        // Setup the Dictionary
+        foreach (Collectable item in collectableItems)
+        {
+            AddItem(item);
+        }
+    }
+
+    private void AddItem(Collectable item)
+    {
+        // Add item to Dictionary if it is not already in it
+        if (!collectableItemsDict.ContainsKey(item.type))
+        {
+            collectableItemsDict.Add(item.type, item);
+        }
+    }
+
+    public Collectable GetItemByType(CollectableType type)
+    {
+        if (collectableItemsDict.ContainsKey(type))
+        {
+            return collectableItemsDict[type];
+        }
+
+        return null;
+    }
+}

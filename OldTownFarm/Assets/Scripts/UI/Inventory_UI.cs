@@ -12,42 +12,68 @@ public class Inventory_UI : MonoBehaviour
 
     private InputAction openInventory;
 
-    private void Awake() {
+    private void Awake() 
+    {
         playerControls = new PlayerInputActions();
     }
 
-    private void OnEnable() {
+    private void OnEnable() 
+    {
         openInventory = playerControls.UI.OpenInventory;
         openInventory.Enable();
         openInventory.performed += OpenInventory;
     }
 
-    private void OnDisable() {
+    private void OnDisable() 
+    {
         openInventory.Disable();
     }
 
-    private void OpenInventory(InputAction.CallbackContext context) {
+    private void OpenInventory(InputAction.CallbackContext context) 
+    {
         ToggleInventory();
     }
 
-    public void ToggleInventory() {
-        if (!inventoryPanel.activeSelf) {
+    public void ToggleInventory() 
+    {
+        if (!inventoryPanel.activeSelf) 
+        {
             inventoryPanel.SetActive(true);
-            Setup();
-        } else {
+            Refresh();
+        } 
+        else 
+        {
             inventoryPanel.SetActive(false);
         }
     }
 
-    public void Setup() {
-        if (slots.Count == player.inventory.slots.Count) {
-            for (int i = 0;  i < slots.Count; i++) {
-                if (player.inventory.slots[i].type != CollectableType.none) {
+    public void Refresh() 
+    {
+        if (slots.Count == player.inventory.slots.Count) 
+        {
+            for (int i = 0;  i < slots.Count; i++) 
+            {
+                if (player.inventory.slots[i].type != CollectableType.none) 
+                {
                     slots[i].SetItem(player.inventory.slots[i]);
-                } else {
+                } 
+                else 
+                {
                     slots[i].SetEmpty();
                 }
             }
+        }
+    }
+
+    public void Remove(int slotID) 
+    {
+        Collectable itemToDrop = GameManager.instance.itemManager.GetItemByType(player.inventory.slots[slotID].type);
+
+        if (itemToDrop != null)
+        {
+            player.DropItem(itemToDrop); // PLACEHOLDER
+            player.inventory.Remove(slotID);
+            Refresh();
         }
     }
 }
