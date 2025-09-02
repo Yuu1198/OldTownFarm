@@ -388,6 +388,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "DragOneItem",
+                    "type": "Button",
+                    "id": "153efbaf-985c-478a-8f5e-959b34205ced",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -916,6 +925,17 @@
                     "processors": "Scale(factor=9)",
                     "groups": "",
                     "action": "SelectSlot",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f5eef70c-be15-4b81-985c-1bc1b5e6bcc7",
+                    "path": "<Keyboard>/shift",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "DragOneItem",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
