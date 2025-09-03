@@ -20,7 +20,7 @@ public class PlayerController : MonoBehaviour
     public Animator playerAnimations;
     public float moveSpeed;
 
-    public Inventory inventory;
+    public InventoryManager inventory;
 
     private Vector2 moveDirection;
     private InputAction move;
@@ -32,8 +32,7 @@ public class PlayerController : MonoBehaviour
     {
         playerControls = new PlayerInputActions();
 
-        // Create Inventory with Slots
-        inventory = new Inventory(21);
+        inventory = GetComponent<InventoryManager>();
     }
 
     private void OnEnable() 
