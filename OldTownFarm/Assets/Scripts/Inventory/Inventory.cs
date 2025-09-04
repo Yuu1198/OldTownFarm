@@ -77,6 +77,7 @@ public class Inventory
     }
 
     public List<Slot> slots = new List<Slot>();
+    public Slot selectedSlot = null; // REFACTURE: make private with getter
 
     public Inventory(int numSlots) 
     {
@@ -141,5 +142,18 @@ public class Inventory
                 fromSlot.RemoveItem(); 
             }
         }
+    }
+
+    public void SelectSlot(int index)
+    {
+        if (slots != null && slots.Count > 0)
+        {
+            selectedSlot = slots[index];
+        }
+    }
+
+    public void DeselectSlot()
+    {
+        selectedSlot = null;
     }
 }

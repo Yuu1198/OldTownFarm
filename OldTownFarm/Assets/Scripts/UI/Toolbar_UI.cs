@@ -46,11 +46,15 @@ public class Toolbar_UI : MonoBehaviour
             selectedSlot = toolbarSlots[index];
             selectedSlot.SetHighlight(true);
 
+            GameManager.instance.player.inventoryManager.toolbar.SelectSlot(index); // REFACTURE: make code less entangled
+
             // Deselect slot if selected again
             if (selectedSlot == previouslySelectedSlot) 
             {
                 selectedSlot.SetHighlight(false);
                 selectedSlot = null;
+
+                GameManager.instance.player.inventoryManager.toolbar.DeselectSlot();
             }
         }
     }

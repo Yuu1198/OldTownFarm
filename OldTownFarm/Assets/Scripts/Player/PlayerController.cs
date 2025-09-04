@@ -20,7 +20,7 @@ public class PlayerController : MonoBehaviour
     public Animator playerAnimations;
     public float moveSpeed;
 
-    public InventoryManager inventory;
+    public InventoryManager inventoryManager;
 
     private Vector2 moveDirection;
     private InputAction move;
@@ -28,11 +28,18 @@ public class PlayerController : MonoBehaviour
 
     private InputAction useTool;
 
+    private TileManager tileManager;
+
     private void Awake() 
     {
         playerControls = new PlayerInputActions();
 
-        inventory = GetComponent<InventoryManager>();
+        inventoryManager = GetComponent<InventoryManager>();
+    }
+
+    private void Start()
+    {
+        tileManager = GameManager.instance.tileManager;
     }
 
     private void OnEnable() 
@@ -160,12 +167,20 @@ public class PlayerController : MonoBehaviour
 
     private void UseTool(InputAction.CallbackContext context)
     {
-        Vector3Int position = new Vector3Int((int)transform.position.x, (int)transform.position.y, 0); // Player position (PLACEHOLDER: Change to tile in front of player)
-
-        // Set Tile to Dirt Tile if Tile is interactable
-        if (GameManager.instance.tileManager.IsInteractable(position))
+        if (tileManager != null)
         {
-            GameManager.instance.tileManager.SetInteracted(position); 
+            Vector3Int position = new Vector3Int((int)transform.position.x, (int)transform.position.y, 0); // Player position (PLACEHOLDER: Change to tile in front of player)
+
+            // REFACTURE: Dont let player handle the tiles
+            string tileName = tileManager.GetTileName(position);
+
+            if (!string.IsNullOrWhiteSpace(tileName))
+            {
+                if (tileName == "interactable" && inventoryManager.toolbar.selectedSlot != null && inventoryManager.toolbar.selectedSlot.itemName == "Hoe") // REFACTURE: no string Hoe here make it a enum with all tools
+                {
+                    tileManager.SetInteracted(position);
+                }
+            }
         }
     }
 

@@ -10364,6 +10364,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ToolbarSlot (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 5061012321312702830, guid: 2c663f5d6a51b6746b9a137e3613adae, type: 3}
+      propertyPath: m_text
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 5372804822116885227, guid: 2c663f5d6a51b6746b9a137e3613adae, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -11702,7 +11706,7 @@ MonoBehaviour:
   faceDown: {fileID: 61477688}
   playerAnimations: {fileID: 714671767}
   moveSpeed: 2
-  inventory: {fileID: 0}
+  inventoryManager: {fileID: 0}
 --- !u!212 &714671766
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -11919,9 +11923,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::InventoryManager
   backpack:
     slots: []
+    selectedSlot:
+      itemName: 
+      count: 0
+      maxAllowed: 99
+      icon: {fileID: 0}
   backpackSlotCount: 21
   toolbar:
     slots: []
+    selectedSlot:
+      itemName: 
+      count: 0
+      maxAllowed: 99
+      icon: {fileID: 0}
   toolbarSlotCount: 9
 --- !u!1 &733596294
 GameObject:
@@ -20537,6 +20551,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ToolbarSlot (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 5061012321312702830, guid: 2c663f5d6a51b6746b9a137e3613adae, type: 3}
+      propertyPath: m_text
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 5372804822116885227, guid: 2c663f5d6a51b6746b9a137e3613adae, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -20750,6 +20768,10 @@ PrefabInstance:
     - target: {fileID: 4068204579447742482, guid: 2c663f5d6a51b6746b9a137e3613adae, type: 3}
       propertyPath: m_Name
       value: ToolbarSlot (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5061012321312702830, guid: 2c663f5d6a51b6746b9a137e3613adae, type: 3}
+      propertyPath: m_text
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 5372804822116885227, guid: 2c663f5d6a51b6746b9a137e3613adae, type: 3}
       propertyPath: m_Pivot.x
@@ -21326,6 +21348,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ToolbarSlot (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 5061012321312702830, guid: 2c663f5d6a51b6746b9a137e3613adae, type: 3}
+      propertyPath: m_text
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 5372804822116885227, guid: 2c663f5d6a51b6746b9a137e3613adae, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -21425,6 +21451,10 @@ PrefabInstance:
     - target: {fileID: 4068204579447742482, guid: 2c663f5d6a51b6746b9a137e3613adae, type: 3}
       propertyPath: m_Name
       value: ToolbarSlot (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5061012321312702830, guid: 2c663f5d6a51b6746b9a137e3613adae, type: 3}
+      propertyPath: m_text
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 5372804822116885227, guid: 2c663f5d6a51b6746b9a137e3613adae, type: 3}
       propertyPath: m_Pivot.x
@@ -21952,6 +21982,10 @@ PrefabInstance:
     - target: {fileID: 4068204579447742482, guid: 2c663f5d6a51b6746b9a137e3613adae, type: 3}
       propertyPath: m_Name
       value: ToolbarSlot (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5061012321312702830, guid: 2c663f5d6a51b6746b9a137e3613adae, type: 3}
+      propertyPath: m_text
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 5372804822116885227, guid: 2c663f5d6a51b6746b9a137e3613adae, type: 3}
       propertyPath: m_Pivot.x
@@ -25095,6 +25129,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ToolbarSlot (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 5061012321312702830, guid: 2c663f5d6a51b6746b9a137e3613adae, type: 3}
+      propertyPath: m_text
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 5372804822116885227, guid: 2c663f5d6a51b6746b9a137e3613adae, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -25625,6 +25663,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ToolbarSlot (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 5061012321312702830, guid: 2c663f5d6a51b6746b9a137e3613adae, type: 3}
+      propertyPath: m_text
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 5372804822116885227, guid: 2c663f5d6a51b6746b9a137e3613adae, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -25859,7 +25901,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TileManager
   interactableMap: {fileID: 25691173}
   hiddenInteractableTile: {fileID: 11400000, guid: 0dfa51799b2a62e4292a46991936d0f6, type: 2}
-  interactedTile: {fileID: 11400000, guid: 750262862395ebd43a3e76120545239f, type: 2}
+  plowedTile: {fileID: 11400000, guid: 750262862395ebd43a3e76120545239f, type: 2}
 --- !u!114 &2108039482
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -5,7 +5,7 @@ public class TileManager : MonoBehaviour
 {
     [SerializeField] private Tilemap interactableMap;
     [SerializeField] private Tile hiddenInteractableTile;
-    [SerializeField] private Tile interactedTile;
+    [SerializeField] private Tile plowedTile;
 
     void Start()
     {
@@ -21,23 +21,24 @@ public class TileManager : MonoBehaviour
         }
     }
 
-    public bool IsInteractable(Vector3Int position)
+    // REFACTURE: not only handle hoe tool but others too (pass tool (enum), different tiles)
+    public void SetInteracted(Vector3Int position)
     {
-        TileBase tile = interactableMap.GetTile(position);
+        interactableMap.SetTile(position, plowedTile);
+    }
 
-        if (tile != null)
+    public string GetTileName(Vector3Int position)
+    {
+        if (interactableMap != null)
         {
-            if (tile.name == "interactable")
+            TileBase tile = interactableMap.GetTile(position);
+
+            if (tile != null)
             {
-                return true;
+                return tile.name;
             }
         }
 
-        return false;
-    }
-
-    public void SetInteracted(Vector3Int position)
-    {
-        interactableMap.SetTile(position, interactedTile);
+        return null;
     }
 }
