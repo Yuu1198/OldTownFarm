@@ -25,6 +25,7 @@ public class PlayerController : MonoBehaviour
     private Vector2 moveDirection;
     private InputAction move;
     private InputAction moveFaster;
+    private Vector2Int facingDirection = Vector2Int.down;
 
     private InputAction useTool;
 
@@ -68,6 +69,7 @@ public class PlayerController : MonoBehaviour
     void Update() 
     {
         Move();
+        tileManager.HighlightTile(transform.position, facingDirection, inventoryManager);
     }
 
     #region Movement
@@ -96,6 +98,8 @@ public class PlayerController : MonoBehaviour
             faceUp.SetActive(false);
             faceDown.SetActive(false);
             playerAnimations.Play("WalkRight");
+
+            facingDirection = Vector2Int.right;
         }
         else
         {
@@ -110,6 +114,8 @@ public class PlayerController : MonoBehaviour
             faceUp.SetActive(false);
             faceDown.SetActive(false);
             playerAnimations.Play("WalkLeft");
+
+            facingDirection = Vector2Int.left;
         }
         else
         {
@@ -124,6 +130,8 @@ public class PlayerController : MonoBehaviour
             faceLeft.SetActive(false);
             faceDown.SetActive(false);
             playerAnimations.Play("WalkUp");
+
+            facingDirection = Vector2Int.up;
         }
         else
         {
@@ -138,6 +146,8 @@ public class PlayerController : MonoBehaviour
             faceLeft.SetActive(false);
             faceUp.SetActive(false);
             playerAnimations.Play("WalkDown");
+
+            facingDirection = Vector2Int.down;
         }
         else
         {
@@ -169,16 +179,19 @@ public class PlayerController : MonoBehaviour
     {
         if (tileManager != null)
         {
-            Vector3Int position = new Vector3Int((int)transform.position.x, (int)transform.position.y, 0); // Player position (PLACEHOLDER: Change to tile in front of player)
+
+            Vector3Int targetTile = tileManager.GetTargetTile(transform.position, facingDirection);
+
+            // Vector3Int position = new Vector3Int((int)transform.position.x, (int)transform.position.y, 0); // Player position (PLACEHOLDER: Change to tile in front of player)
 
             // REFACTURE: Dont let player handle the tiles
-            string tileName = tileManager.GetTileName(position);
+            string tileName = tileManager.GetTileName(targetTile);
 
             if (!string.IsNullOrWhiteSpace(tileName))
             {
                 if (tileName == "interactable" && inventoryManager.toolbar.selectedSlot != null && inventoryManager.toolbar.selectedSlot.itemName == "Hoe") // REFACTURE: no string Hoe here make it a enum with all tools
                 {
-                    tileManager.SetInteracted(position);
+                    tileManager.SetInteracted(targetTile);
                 }
             }
         }
