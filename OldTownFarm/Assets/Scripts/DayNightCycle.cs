@@ -1,11 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
-
 using TMPro;
-
-using UnityEngine.Rendering.Universal;
+using Unity.VisualScripting;
+using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Rendering.Universal;
 
 public class DayNightCycle : MonoBehaviour
 {
@@ -23,6 +22,24 @@ public class DayNightCycle : MonoBehaviour
 
     public UnityEvent<int> OnHourChanged;
     public UnityEvent<int> OnDayChanged;
+
+    private int wakeUpTime = 7;
+
+    public static DayNightCycle Instance { get; private set; }
+
+    private void Awake()
+    {
+        // If there is an instance, and it's not me, delete myself.
+
+        if (Instance != null && Instance != this)
+        {
+            Destroy(this);
+        }
+        else
+        {
+            Instance = this;
+        }
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -109,5 +126,15 @@ public class DayNightCycle : MonoBehaviour
     {
         timeDisplay.text = string.Format("{0:00}:{1:00}", hours, mins); // The formatting ensures that there will always be 0's in empty spaces
         dayDisplay.text = "Day " + days; // display day counter
+    }
+
+    public void ProgressToNextDay()
+    {
+        days++;
+        OnDayChanged.Invoke(days);
+        hours = wakeUpTime;
+        OnHourChanged.Invoke(hours);
+
+        ControlLight();
     }
 }

@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
@@ -171,6 +172,24 @@ public class PlayerController : MonoBehaviour
         {
             moveSpeed = slowerMoveSpeed;
             playerAnimations.speed = 1;
+        }
+    }
+
+    public void SetCanMove(bool canMove)
+    {
+        if (canMove)
+        {
+            move.Enable();
+            moveFaster.Enable();
+            useTool.Enable();
+        }
+        else
+        {
+            move.Disable();
+            moveFaster.Disable();
+            useTool.Disable();
+
+            rb2d.linearVelocity = Vector2.zero; // Stop movement immediately
         }
     }
     #endregion

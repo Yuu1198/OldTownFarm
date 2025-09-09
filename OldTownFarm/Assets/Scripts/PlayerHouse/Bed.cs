@@ -1,9 +1,7 @@
 using UnityEngine;
 
-public class HouseEnterLeave : MonoBehaviour
+public class Bed : MonoBehaviour
 {
-    [SerializeField] private GameObject spawnPosition;
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
@@ -14,13 +12,10 @@ public class HouseEnterLeave : MonoBehaviour
                 player.SetCanMove(false); // Player cannot move during Transition
                 StartCoroutine(ScreenTransition.Instance.FadeOutIn(() =>
                 {
-                    collision.transform.position = spawnPosition.transform.position;
+                    DayNightCycle.Instance.ProgressToNextDay();
                     player.SetCanMove(true); // Player can move again
                 }));
-                
-            }
-
-            
+            }  
         }
     }
 }
