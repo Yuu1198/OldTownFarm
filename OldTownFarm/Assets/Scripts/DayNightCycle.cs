@@ -77,7 +77,26 @@ public class DayNightCycle : MonoBehaviour
 
     private void ControlLight()
     {
-        if (hours == GetDuskHour()) // Dusk
+        if (hours == GetDawnHour()) // Dawn
+        {
+            globalLight.intensity = 0.005f + mins / 60.3f;
+            if (activateLights == true)
+            {
+                if (mins > 30)
+                {
+                    for (int i = 0; i < nightLights.Length; i++)
+                    {
+                        nightLights[i].SetActive(false);
+                    }
+                    activateLights = false;
+                }
+            }
+        }
+        else if (hours > GetDawnHour() && hours < GetDuskHour() && globalLight.intensity < 1f)
+        {
+            globalLight.intensity = 1f;
+        }
+        else if (hours == GetDuskHour()) // Dusk
         {
             globalLight.intensity = 1 - mins / 60.3f;
 
@@ -93,22 +112,9 @@ public class DayNightCycle : MonoBehaviour
                 }
             }
         }
-
-
-        if (hours == GetDawnHour()) // Dawn
+        else if ((hours > GetDuskHour() || hours < GetDawnHour()) && globalLight.intensity > 0.005f)
         {
-            globalLight.intensity = 0.005f + mins / 60.3f;
-            if (activateLights == true)
-            {
-                if (mins > 30)
-                {
-                    for (int i = 0; i < nightLights.Length; i++)
-                    {
-                        nightLights[i].SetActive(false);
-                    }
-                    activateLights = false;
-                }
-            }
+            globalLight.intensity = 0.005f;
         }
     }
 
