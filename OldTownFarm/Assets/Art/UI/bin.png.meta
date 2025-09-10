@@ -1,10 +1,13 @@
 fileFormatVersion: 2
-guid: f87be320d2096544e80b90d77c266662
+guid: 0b55be2ea2373754c8d96b8dd73ecf95
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -5868093129598958763
-    second: bin_0
+      213: -7315640254157762777
+    second: bin 1_0
+  - first:
+      213: 3972225236265417070
+    second: bin 1_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,7 +103,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: bin_0
+      name: bin 1_0
       rect:
         serializedVersion: 2
         x: 1
@@ -115,8 +118,30 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 553085d9368509ea0800000000000000
-      internalID: -5868093129598958763
+      spriteID: 72fc062e2ff997a90800000000000000
+      internalID: -7315640254157762777
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bin 1_1
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 3
+        width: 11
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e69317f7ecd202730800000000000000
+      internalID: 3972225236265417070
       vertices: []
       indices: 
       edges: []
@@ -125,7 +150,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: d74e5388b653ba840b24b5b8f6f9b608
+    spriteID: b2280732b65c7fd47af4777bb137d46d
     internalID: 0
     vertices: []
     indices: 
@@ -137,7 +162,8 @@ TextureImporter:
       - key: SpriteEditor.SliceSettings
         value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":64.0,"y":64.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":0,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      bin_0: -5868093129598958763
+      bin 1_0: -7315640254157762777
+      bin 1_1: 3972225236265417070
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

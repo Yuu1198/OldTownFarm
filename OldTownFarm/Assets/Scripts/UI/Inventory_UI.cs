@@ -1,6 +1,7 @@
 using NUnit.Framework;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
@@ -13,6 +14,11 @@ public class Inventory_UI : MonoBehaviour
     [SerializeField] private Canvas canvas;
 
     private Inventory inventory;
+
+
+    [SerializeField] private Image binImage;
+    [SerializeField] private Sprite closedBin;
+    [SerializeField] private Sprite openedBin;
 
     private void Awake()
     { 
@@ -66,6 +72,7 @@ public class Inventory_UI : MonoBehaviour
         }
 
         UI_Manager.draggedSlot = null;
+        CloseBin(); // Close Bin after dragged Item is deleted
     }
 
     public void SlotBeginDrag(Slots_UI slot)
@@ -105,6 +112,8 @@ public class Inventory_UI : MonoBehaviour
         }
 
         GameManager.instance.uiManager.RefreshAll();
+
+        UI_Manager.draggedSlot = null;
     }
 
     private void MoveToMousePosition(GameObject toMove)
@@ -130,5 +139,18 @@ public class Inventory_UI : MonoBehaviour
             counter++;
             slot.inventory = inventory;
         }
+    }
+
+    public void OpenBin()
+    {
+        if (UI_Manager.draggedSlot != null)
+        {
+            binImage.sprite = openedBin;
+        }
+    }
+
+    public void CloseBin()
+    {
+        binImage.sprite = closedBin;
     }
 }

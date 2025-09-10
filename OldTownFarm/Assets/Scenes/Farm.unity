@@ -24673,6 +24673,38 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2127668011}
+          m_TargetAssemblyTypeName: Inventory_UI, Assembly-CSharp
+          m_MethodName: OpenBin
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2127668011}
+          m_TargetAssemblyTypeName: Inventory_UI, Assembly-CSharp
+          m_MethodName: CloseBin
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!114 &1317939756
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24693,7 +24725,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -5868093129598958763, guid: f87be320d2096544e80b90d77c266662, type: 3}
+  m_Sprite: {fileID: -7315640254157762777, guid: 0b55be2ea2373754c8d96b8dd73ecf95, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -25801,6 +25833,9 @@ MonoBehaviour:
   - {fileID: 927658283}
   - {fileID: 153898821}
   canvas: {fileID: 0}
+  binImage: {fileID: 0}
+  closedBin: {fileID: 0}
+  openedBin: {fileID: 0}
 --- !u!1001 &1601900300
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -28317,6 +28352,9 @@ MonoBehaviour:
   - {fileID: 678722731}
   - {fileID: 858624537}
   canvas: {fileID: 0}
+  binImage: {fileID: 1317939756}
+  closedBin: {fileID: -7315640254157762777, guid: 0b55be2ea2373754c8d96b8dd73ecf95, type: 3}
+  openedBin: {fileID: 3972225236265417070, guid: 0b55be2ea2373754c8d96b8dd73ecf95, type: 3}
 --- !u!1001 &2137580261
 PrefabInstance:
   m_ObjectHideFlags: 0
