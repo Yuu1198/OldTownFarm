@@ -13481,18 +13481,16 @@ MonoBehaviour:
   backpack:
     slots: []
     selectedSlot:
-      itemName: 
+      item: {fileID: 0}
       count: 0
       maxAllowed: 99
-      icon: {fileID: 0}
   backpackSlotCount: 21
   toolbar:
     slots: []
     selectedSlot:
-      itemName: 
+      item: {fileID: 0}
       count: 0
       maxAllowed: 99
-      icon: {fileID: 0}
   toolbarSlotCount: 9
 --- !u!1 &715231872
 GameObject:
@@ -28124,9 +28122,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TileManager
   interactableMap: {fileID: 25691173}
   hiddenInteractableTile: {fileID: 11400000, guid: 0dfa51799b2a62e4292a46991936d0f6, type: 2}
-  plowedTile: {fileID: 11400000, guid: 750262862395ebd43a3e76120545239f, type: 2}
   highlightMap: {fileID: 646585155}
   highlightTile: {fileID: 11400000, guid: 6dc8eb0b2fcdfb2498c386cca5138c47, type: 2}
+  plowedTile: {fileID: 11400000, guid: 750262862395ebd43a3e76120545239f, type: 2}
+  plantedTile: {fileID: 11400000, guid: ead87286c7f599a4ab305f16dacbb1b2, type: 2}
 --- !u!114 &2108039482
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28865,6 +28864,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 324964555}
     m_Modifications:
+    - target: {fileID: 4107674283539475767, guid: 2ed7beaf1e4239a4687e3f29a779c94d, type: 3}
+      propertyPath: data
+      value: 
+      objectReference: {fileID: 11400000, guid: 14dca128d918bca44a5d8be988a670c4, type: 2}
     - target: {fileID: 6683579004014436323, guid: 2ed7beaf1e4239a4687e3f29a779c94d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 2.52

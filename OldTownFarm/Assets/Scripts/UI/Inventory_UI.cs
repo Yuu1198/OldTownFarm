@@ -35,15 +35,15 @@ public class Inventory_UI : MonoBehaviour
 
     public void Refresh() 
     {
-        if (slots.Count ==inventory.slots.Count) 
+        if (slots.Count == inventory.slots.Count) 
         {
             for (int i = 0;  i < slots.Count; i++) 
             {
-                if (inventory.slots[i].itemName != "") 
+                if (inventory.slots[i].itemData != null) 
                 {
                     slots[i].SetItem(inventory.slots[i]);
                 } 
-                else 
+                else
                 {
                     slots[i].SetEmpty();
                 }
@@ -53,7 +53,7 @@ public class Inventory_UI : MonoBehaviour
 
     public void Remove() 
     {
-        Item itemToDrop = GameManager.instance.itemManager.GetItemByName(inventory.slots[UI_Manager.draggedSlot.slotID].itemName);
+        Item itemToDrop = GameManager.instance.itemManager.GetItemByName(inventory.slots[UI_Manager.draggedSlot.slotID].itemData.itemName);
 
         if (itemToDrop != null)
         {

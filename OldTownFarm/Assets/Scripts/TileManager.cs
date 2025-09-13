@@ -4,14 +4,33 @@ using UnityEngine.Tilemaps;
 
 public class TileManager : MonoBehaviour
 {
+    public static TileManager Instance { get; private set; }
+
     [SerializeField] private Tilemap interactableMap;
     [SerializeField] private Tile hiddenInteractableTile;
-    [SerializeField] private Tile plowedTile;
 
     [SerializeField] private Tilemap highlightMap;
     [SerializeField] private Tile highlightTile;
 
+    [Header("Tile types:")]
+    [SerializeField] public Tile plowedTile;
+    [SerializeField] public Tile plantedTile;
+
     private Vector3Int lastHighlightedTile;
+
+    private void Awake()
+    {
+        // If there is an instance, and it's not me, delete myself.
+
+        if (Instance != null && Instance != this)
+        {
+            Destroy(this);
+        }
+        else
+        {
+            Instance = this;
+        }
+    }
 
     void Start()
     {
@@ -25,12 +44,6 @@ public class TileManager : MonoBehaviour
                 interactableMap.SetTile(position, hiddenInteractableTile);
             }
         }
-    }
-
-    // REFACTURE: not only handle hoe tool but others too (pass tool (enum), different tiles)
-    public void SetInteracted(Vector3Int position)
-    {
-        interactableMap.SetTile(position, plowedTile);
     }
 
     public string GetTileName(Vector3Int position)
@@ -59,7 +72,7 @@ public class TileManager : MonoBehaviour
     public void HighlightTile(Vector3 playerPosition, Vector2Int facingDirection, InventoryManager inventoryManager)
     {
         // Clear when no Tool selected
-        if (inventoryManager.toolbar.selectedSlot == null || string.IsNullOrWhiteSpace(inventoryManager.toolbar.selectedSlot.itemName))
+        if (inventoryManager.toolbar.selectedSlot == null || inventoryManager.toolbar.selectedSlot.itemData == null)
         {
             if (highlightMap.HasTile(lastHighlightedTile))
             {
@@ -83,10 +96,15 @@ public class TileManager : MonoBehaviour
         {
             //if (targetTileName == "interactable")
             {
-                
+
                 highlightMap.SetTile(targetTile, highlightTile);
                 lastHighlightedTile = targetTile;
             }
         }
+    }
+
+    public void SetTile(Vector3Int position, Tile newTile)
+    {
+        interactableMap.SetTile(position, newTile);
     }
 }

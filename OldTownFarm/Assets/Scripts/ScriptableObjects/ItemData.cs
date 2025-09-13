@@ -5,4 +5,12 @@ public class ItemData : ScriptableObject
 {
     public string itemName = "Item Name";
     public Sprite icon;
+
+    /*
+     * Implements the logic of the item (e.g. plowing functionality of hoe)
+     */
+    public virtual void Use(Vector3Int targetTile)
+    {
+        Debug.Log($"{itemName} was used which has no implemented logic.");
+    }
 }

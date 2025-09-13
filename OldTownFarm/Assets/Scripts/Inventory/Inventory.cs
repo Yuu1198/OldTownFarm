@@ -6,16 +6,15 @@ using UnityEngine;
 public class Inventory 
 {
     [System.Serializable]
-    public class Slot 
+    public class Slot
     {
-        public string itemName;
+        public ItemData itemData;
         public int count;
         public int maxAllowed;
-        public Sprite icon;
 
         public Slot() 
         {
-            itemName = "";
+            itemData = null;
             count = 0;
             maxAllowed = 99;
         }
@@ -24,7 +23,7 @@ public class Inventory
         {
             get
             {
-                if (itemName == "" && count == 0)
+                if (itemData == null && count == 0)
                 {
                     return true;
                 }
@@ -35,7 +34,7 @@ public class Inventory
 
         public bool CanAddItem(string itemName) 
         {
-            if (this.itemName == itemName && count < maxAllowed) 
+            if (this.itemData.itemName == itemName && count < maxAllowed) 
             {
                 return true;
             } 
@@ -46,15 +45,14 @@ public class Inventory
         }
 
         public void AddItem(Item item) {
-            this.itemName = item.data.itemName;
-            this.icon = item.data.icon;
+            Debug.Log("Adding item " + item.data.name);
+            this.itemData = item.data;
             count++;
         }
 
-        public void AddItem(string itemName, Sprite icon, int maxAllowed)
+        public void AddItem(ItemData itemData, int maxAllowed)
         {
-            this.itemName = itemName;
-            this.icon = icon;
+            this.itemData = itemData;
             count++;
             this.maxAllowed = maxAllowed;
         }
@@ -62,6 +60,7 @@ public class Inventory
         public void RemoveItem() 
         {
             // Remove Item from Slot if at least one Item is in it
+            Debug.Log("Remove item");
             if (count > 0)
             { 
                 count--;
@@ -69,8 +68,7 @@ public class Inventory
                 // Slot is empty
                 if (count == 0) 
                 {
-                    icon = null;
-                    itemName = "";
+                    itemData = null;
                 }
             }
         }
@@ -94,7 +92,7 @@ public class Inventory
         // Find Slot with same type of Collectable
         foreach (Slot slot in slots) 
         {
-            if (slot.itemName == item.data.itemName && slot.CanAddItem(item.data.itemName)) 
+            if (slot.itemData != null && slot.itemData.itemName == item.data.itemName && slot.CanAddItem(item.data.itemName)) 
             {
                 slot.AddItem(item);
                 return;
@@ -104,7 +102,7 @@ public class Inventory
         // Add Collectable to empty slot
         foreach (Slot slot in slots) 
         {
-            if (slot.itemName == "") 
+            if (slot.itemData == null) 
             {
                 slot.AddItem(item);
                 return;
@@ -134,12 +132,12 @@ public class Inventory
         Slot toSlot = toInventory.slots[toIndex];
 
         // Check if we can move to Slot
-        if (toSlot.IsEmpty || toSlot.CanAddItem(fromSlot.itemName))
+        if (toSlot.IsEmpty || toSlot.CanAddItem(fromSlot.itemData.itemName))
         {
             for (int i = 0; i < numToMove; i++)
             {
-                toSlot.AddItem(fromSlot.itemName, fromSlot.icon, fromSlot.maxAllowed);
-                fromSlot.RemoveItem(); 
+                toSlot.AddItem(fromSlot.itemData, fromSlot.maxAllowed);
+                fromSlot.RemoveItem();
             }
         }
     }
