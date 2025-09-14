@@ -45,7 +45,6 @@ public class Inventory
         }
 
         public void AddItem(Item item) {
-            Debug.Log("Adding item " + item.data.name);
             this.itemData = item.data;
             count++;
         }
@@ -60,7 +59,6 @@ public class Inventory
         public void RemoveItem() 
         {
             // Remove Item from Slot if at least one Item is in it
-            Debug.Log("Remove item");
             if (count > 0)
             { 
                 count--;

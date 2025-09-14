@@ -53,22 +53,25 @@ public class Inventory_UI : MonoBehaviour
 
     public void Remove() 
     {
-        Item itemToDrop = GameManager.instance.itemManager.GetItemByName(inventory.slots[UI_Manager.draggedSlot.slotID].itemData.itemName);
-
-        if (itemToDrop != null)
+        if (inventory.slots[UI_Manager.draggedSlot.slotID].itemData != null)
         {
-            if (UI_Manager.dragSingle)
-            {
-                // GameManager.instance.player.DropItem(itemToDrop); // PLACEHOLDER
-                inventory.Remove(UI_Manager.draggedSlot.slotID);
-            }
-            else
-            {
-                // GameManager.instance.player.DropItem(itemToDrop, player.inventory.slots[draggedSlot.slotID].count); // PLACEHOLDER
-                inventory.Remove(UI_Manager.draggedSlot.slotID, inventory.slots[UI_Manager.draggedSlot.slotID].count);
-            }
+            Item itemToDrop = GameManager.instance.itemManager.GetItemByName(inventory.slots[UI_Manager.draggedSlot.slotID].itemData.itemName);
 
-            Refresh();
+            if (itemToDrop != null)
+            {
+                if (UI_Manager.dragSingle)
+                {
+                    // GameManager.instance.player.DropItem(itemToDrop); // PLACEHOLDER
+                    inventory.Remove(UI_Manager.draggedSlot.slotID);
+                }
+                else
+                {
+                    // GameManager.instance.player.DropItem(itemToDrop, player.inventory.slots[draggedSlot.slotID].count); // PLACEHOLDER
+                    inventory.Remove(UI_Manager.draggedSlot.slotID, inventory.slots[UI_Manager.draggedSlot.slotID].count);
+                }
+
+                Refresh();
+            }
         }
 
         UI_Manager.draggedSlot = null;

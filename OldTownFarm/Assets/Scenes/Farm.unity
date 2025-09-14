@@ -13481,14 +13481,14 @@ MonoBehaviour:
   backpack:
     slots: []
     selectedSlot:
-      item: {fileID: 0}
+      itemData: {fileID: 0}
       count: 0
       maxAllowed: 99
   backpackSlotCount: 21
   toolbar:
     slots: []
     selectedSlot:
-      item: {fileID: 0}
+      itemData: {fileID: 0}
       count: 0
       maxAllowed: 99
   toolbarSlotCount: 9
