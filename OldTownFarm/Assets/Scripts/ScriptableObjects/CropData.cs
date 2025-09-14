@@ -6,10 +6,10 @@ using UnityEngine.Tilemaps;
 [CreateAssetMenu(menuName = "Crop Data")]
 public class CropData : ScriptableObject
 {
-    public int timeToGrow = 10; // TODO: which unit?
+    public int timePerGrowthStage = 10;
     public List<HarvestItem> harvestItems;
 
-    public List<Sprite> growthStages;
+    public List<Tile> growthStages;
 }
 
 [Serializable]

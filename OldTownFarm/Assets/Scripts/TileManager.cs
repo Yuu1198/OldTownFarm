@@ -4,7 +4,7 @@ using UnityEngine.Tilemaps;
 
 public class TileManager : MonoBehaviour
 {
-    public static TileManager Instance { get; private set; }
+    public static TileManager instance { get; private set; }
 
     [SerializeField] private Tilemap interactableMap;
     [SerializeField] private Tile hiddenInteractableTile;
@@ -22,13 +22,13 @@ public class TileManager : MonoBehaviour
     {
         // If there is an instance, and it's not me, delete myself.
 
-        if (Instance != null && Instance != this)
+        if (instance != null && instance != this)
         {
             Destroy(this);
         }
         else
         {
-            Instance = this;
+            instance = this;
         }
     }
 

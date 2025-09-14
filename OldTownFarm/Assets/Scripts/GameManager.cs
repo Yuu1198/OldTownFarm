@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
     public ItemManager itemManager;
     public TileManager tileManager;
     public UI_Manager uiManager;
+    public CropManager cropManager;
 
     public PlayerController player;
 
@@ -26,6 +27,7 @@ public class GameManager : MonoBehaviour
         itemManager = GetComponent<ItemManager>();
         tileManager = GetComponent<TileManager>();
         uiManager = GetComponent<UI_Manager>();
+        cropManager = GetComponent<CropManager>();
 
         player = FindFirstObjectByType<PlayerController>();
     }

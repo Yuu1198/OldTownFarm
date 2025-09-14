@@ -12,7 +12,7 @@ public class Bed : MonoBehaviour
                 player.SetCanMove(false); // Player cannot move during Transition
                 StartCoroutine(ScreenTransition.Instance.FadeOutIn(() =>
                 {
-                    DayNightCycle.Instance.ProgressToNextDay();
+                    DayNightCycle.instance.ProgressToNextDay();
                     player.SetCanMove(true); // Player can move again
                 }));
             }  

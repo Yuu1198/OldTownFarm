@@ -12,12 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 463dcde7ac77045439c98c5154018206, type: 3}
   m_Name: Carrot
   m_EditorClassIdentifier: Assembly-CSharp::Crop
-  timeToGrow: 1
+  timePerGrowthStage: 2
   harvestItems:
   - item: {fileID: 1109518836958464437, guid: 93e74acc4e9db2e40b22b4a9726803bf, type: 3}
     yield: 3
   growthStages:
-  - {fileID: 6228494214738888450, guid: f9d54e318f6ba0744ba19f3ad3123ac6, type: 3}
-  - {fileID: -6693152464593359845, guid: f9d54e318f6ba0744ba19f3ad3123ac6, type: 3}
-  - {fileID: 8572410228555196881, guid: f9d54e318f6ba0744ba19f3ad3123ac6, type: 3}
-  - {fileID: -2269277166046119823, guid: f9d54e318f6ba0744ba19f3ad3123ac6, type: 3}
+  - {fileID: 11400000, guid: 4e30694c8c30418498e3f31c6c9915e0, type: 2}
+  - {fileID: 11400000, guid: c3a29b177a1adf548af7969a841ac37d, type: 2}
+  - {fileID: 11400000, guid: ed3cc163ff9b13d49b1b539f43fb33b7, type: 2}
+  - {fileID: 11400000, guid: d24d79a1261224a48b6b0973af4ccee3, type: 2}
+  - {fileID: 11400000, guid: c472626a4bae0854e8e04f7cb03922b7, type: 2}

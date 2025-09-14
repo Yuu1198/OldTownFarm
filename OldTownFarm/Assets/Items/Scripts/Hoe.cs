@@ -9,6 +9,6 @@ public class Hoe : ItemData
      */
     public override void Use(Vector3Int targetTile)
     {
-        TileManager.Instance.SetTile(targetTile, TileManager.Instance.plowedTile);
+        TileManager.instance.SetTile(targetTile, TileManager.instance.plowedTile);
     }
 }

@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Seeds
   itemName: Carrot Seeds
   icon: {fileID: 21300000, guid: ec56ac3d5e695914da9a342507968a46, type: 3}
-  crop: {fileID: 6093528234468579406, guid: bc615e3ecb6f41d4ca5d0083605ffb67, type: 3}
+  crop: {fileID: 11400000, guid: 7b7f7ca04afb55541ac0ddf17da04843, type: 2}

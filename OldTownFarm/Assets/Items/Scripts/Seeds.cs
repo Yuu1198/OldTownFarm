@@ -4,7 +4,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Seed Item Data", menuName = "Items/Seeds", order = 52)]
 public class Seeds : ItemData
 {
-    [SerializeField] private GameObject crop;
+    [SerializeField] private CropData crop;
 
     /*
      * Contains logic for seeding crops.
@@ -12,12 +12,13 @@ public class Seeds : ItemData
     public override void Use(Vector3Int targetTile)
     {
         // Only allow seeding on plowed tiles.
-        if (TileManager.Instance.GetTileName(targetTile) == TileManager.Instance.plowedTile.name)
+        if (TileManager.instance.GetTileName(targetTile) == TileManager.instance.plowedTile.name)
         {
-            TileManager.Instance.SetTile(targetTile, TileManager.Instance.plantedTile);
+            TileManager.instance.SetTile(targetTile, TileManager.instance.plantedTile);
             GameManager.instance.player.inventoryManager.toolbar.selectedSlot.RemoveItem(); // this is a bit dirty, maybe REFACTURE?
             GameManager.instance.uiManager.RefreshAll();
-            Instantiate(crop, targetTile + new Vector3(0.5f, 0.3f), Quaternion.identity);
+            //Instantiate(crop, targetTile + new Vector3(0.5f, 0.3f), Quaternion.identity);
+            CropManager.instance.SeedCrop(targetTile, crop);
         }
     }
 }

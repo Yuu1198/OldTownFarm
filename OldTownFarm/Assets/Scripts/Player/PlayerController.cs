@@ -63,7 +63,7 @@ public class PlayerController : MonoBehaviour
     void Update() 
     {
         Move();
-        TileManager.Instance.HighlightTile(transform.position, facingDirection, inventoryManager);
+        TileManager.instance.HighlightTile(transform.position, facingDirection, inventoryManager);
     }
 
     #region Movement
@@ -189,10 +189,10 @@ public class PlayerController : MonoBehaviour
 
     private void UseTool(InputAction.CallbackContext context)
     {
-        if (TileManager.Instance != null)
+        if (TileManager.instance != null)
         {
 
-            Vector3Int targetTile = TileManager.Instance.GetTargetTile(transform.position, facingDirection);
+            Vector3Int targetTile = TileManager.instance.GetTargetTile(transform.position, facingDirection);
 
             // Vector3Int position = new Vector3Int((int)transform.position.x, (int)transform.position.y, 0); // Player position (PLACEHOLDER: Change to tile in front of player)
 
