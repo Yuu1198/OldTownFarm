@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 2999583879386811058}
   - component: {fileID: 4107674283539475767}
   m_Layer: 0
-  m_Name: Hoe
+  m_Name: Knife
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -31,7 +31,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 5, y: 5, z: 5}
+  m_LocalScale: {x: 3, y: 3, z: 3}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
@@ -83,7 +83,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 5
-  m_Sprite: {fileID: 8834441656716106029, guid: 89aa6e646d678644f87f0175ddf4b04d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: bc840f90fbdc93549af8e6e107788e0c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -132,13 +132,13 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.12, y: 0.14}
+    oldSize: {x: 0.16, y: 0.16}
     newSize: {x: 0.13, y: 0.15}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.12, y: 0.14}
+  m_Size: {x: 0.16, y: 0.16}
   m_EdgeRadius: 0
 --- !u!50 &5343094283295526259
 Rigidbody2D:
@@ -191,5 +191,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5450d390735c9424aa58fbff3727c643, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Item
-  data: {fileID: 11400000, guid: 14dca128d918bca44a5d8be988a670c4, type: 2}
+  data: {fileID: 11400000, guid: 477099edbfde4cc4eb104fdb0c1bdc38, type: 2}
   rb2d: {fileID: 0}

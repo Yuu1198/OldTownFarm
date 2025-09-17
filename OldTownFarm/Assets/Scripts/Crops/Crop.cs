@@ -7,6 +7,8 @@ public class Crop
     public int currentGrowthTime { get; private set; } = 0;
     public int currentGrowthStage { get; private set; } = 0;
 
+    public bool harvestable = false;
+
     public Crop(CropData data, Vector3Int position)
     {
         this.data = data;
@@ -27,6 +29,10 @@ public class Crop
                 ++currentGrowthStage;
                 Debug.Log("Increasing growth stage");
                 grown = true;
+            }
+            else
+            {
+                harvestable = true; // Ready for the harvest
             }
             currentGrowthTime = 0;
         }

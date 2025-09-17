@@ -44,4 +44,26 @@ public class CropManager : MonoBehaviour
         cropList.Add(new Crop(crop, position));
         cropMap.SetTile(position, crop.growthStages[0]);
     }
+
+    public Crop GetCropAtTile(Vector3Int position)
+    {
+        foreach(var crop in cropList)
+        {
+            if (crop.position == position)
+            {
+                return crop;
+            }  
+        }
+
+        return null;
+    }
+
+    public void RemoveCrop(Crop crop)
+    {
+        if (cropList.Contains(crop))
+        {
+            cropList.Remove(crop);
+            cropMap.SetTile(crop.position, null);
+        }
+    }
 }

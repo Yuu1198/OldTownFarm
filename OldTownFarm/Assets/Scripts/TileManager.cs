@@ -1,6 +1,7 @@
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using System.Collections.Generic;
 
 public class TileManager : MonoBehaviour
 {
@@ -13,6 +14,7 @@ public class TileManager : MonoBehaviour
     [SerializeField] private Tile highlightTile;
 
     [Header("Tile types:")]
+    [SerializeField] public List<Tile> grassTiles;
     [SerializeField] public Tile plowedTile;
     [SerializeField] public Tile plantedTile;
 
