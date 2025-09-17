@@ -13,7 +13,7 @@ public class Knife : ItemData
     {
         Crop crop = CropManager.instance.GetCropAtTile(targetTile);
 
-        if (crop.harvestable) // Check if harvestable on tile
+        if (crop.isHarvestable) // Check if harvestable on tile
         {
             // Add harvest to inventory
             List<HarvestItem> harvestList = crop.data.harvestItems;

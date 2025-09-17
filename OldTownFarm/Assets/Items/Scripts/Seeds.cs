@@ -12,7 +12,7 @@ public class Seeds : ItemData
     public override void Use(Vector3Int targetTile)
     {
         // Only allow seeding on plowed tiles.
-        if (TileManager.instance.GetTileName(targetTile) == TileManager.instance.plowedTile.name)
+        if (TileManager.instance.GetTileName(targetTile) == TileManager.instance.plowedTile.name && CropManager.instance.GetCropAtTile(targetTile) == null)
         {
             TileManager.instance.SetTile(targetTile, TileManager.instance.plantedTile);
             GameManager.instance.player.inventoryManager.toolbar.selectedSlot.RemoveItem(); // this is a bit dirty, maybe REFACTURE?
