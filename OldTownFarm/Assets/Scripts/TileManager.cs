@@ -20,7 +20,7 @@ public class TileManager : MonoBehaviour
 
     private Vector3Int lastHighlightedTile;
 
-    private int daysTillFliedReset = 3;
+    private int daysTillFieldReset = 3;
 
     public enum TileType
     {

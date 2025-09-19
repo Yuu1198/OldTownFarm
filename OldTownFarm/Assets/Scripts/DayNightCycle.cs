@@ -138,8 +138,19 @@ public class DayNightCycle : MonoBehaviour
     {
         days++;
         OnDayChanged.Invoke(days);
-        hours = wakeUpTime;
-        OnHourChanged.Invoke(hours);
+        mins = 0;
+        if (hours >= wakeUpTime)
+        {
+            while (hours < 24)
+            {
+                OnHourChanged.Invoke(++hours);
+            }
+            hours = 0;
+        }
+        while (hours < wakeUpTime)
+        {
+            OnHourChanged.Invoke(++hours);
+        }
 
         ControlLight();
     }

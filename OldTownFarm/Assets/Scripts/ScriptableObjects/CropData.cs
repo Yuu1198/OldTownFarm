@@ -10,6 +10,7 @@ public class CropData : ScriptableObject
     public List<HarvestItem> harvestItems;
 
     public List<Tile> growthStages;
+    public Tile withered;
 }
 
 [Serializable]

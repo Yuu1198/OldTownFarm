@@ -25,14 +25,14 @@ public class CropManager : MonoBehaviour
 
     private void Start()
     {
-        DayNightCycle.instance.OnDayChanged.AddListener(OnNextDay);
+        DayNightCycle.instance.OnHourChanged.AddListener(OnHourChanged);
     }
 
-    private void OnNextDay(int day)
+    private void OnHourChanged(int hour)
     {
         foreach (var crop in cropList)
         {
-            if (crop.Grow())
+            if (!crop.IsWithered() && crop.Grow())
             {
                 cropMap.SetTile(crop.position, crop.data.growthStages[crop.currentGrowthStage]);
             }
@@ -64,6 +64,14 @@ public class CropManager : MonoBehaviour
         {
             cropList.Remove(crop);
             cropMap.SetTile(crop.position, null);
+        }
+    }
+
+    public void SetWithered(Crop crop)
+    {
+        if (cropList.Contains(crop))
+        {
+            cropMap.SetTile(crop.position, crop.data.withered);
         }
     }
 }

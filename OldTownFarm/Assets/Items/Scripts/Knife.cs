@@ -15,7 +15,7 @@ public class Knife : ItemData
 
         if (crop != null )
         {
-            if (crop.isHarvestable) // Check if harvestable on tile
+            if (crop.IsHarvestable()) // Check if harvestable on tile
             {
                 // Add harvest to inventory
                 List<HarvestItem> harvestList = crop.data.harvestItems;
@@ -29,6 +29,11 @@ public class Knife : ItemData
                     }
                 }
 
+                // Delete crop on tile
+                CropManager.instance.RemoveCrop(crop);
+            }
+            if (crop.IsWithered())
+            {
                 // Delete crop on tile
                 CropManager.instance.RemoveCrop(crop);
             }
