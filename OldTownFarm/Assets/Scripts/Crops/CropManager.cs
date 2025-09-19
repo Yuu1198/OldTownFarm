@@ -25,10 +25,10 @@ public class CropManager : MonoBehaviour
 
     private void Start()
     {
-        DayNightCycle.instance.OnHourChanged.AddListener(OnHourChanged);
+        DayNightCycle.instance.OnDayChanged.AddListener(OnNextDay);
     }
 
-    private void OnHourChanged(int hour)
+    private void OnNextDay(int day)
     {
         foreach (var crop in cropList)
         {

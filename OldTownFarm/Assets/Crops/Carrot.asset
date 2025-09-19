@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 463dcde7ac77045439c98c5154018206, type: 3}
   m_Name: Carrot
   m_EditorClassIdentifier: Assembly-CSharp::Crop
-  timePerGrowthStage: 2
+  timePerGrowthStage: 1
   harvestItems:
   - item: {fileID: 1109518836958464437, guid: 348aae2603c464e4fb09422119c626f0, type: 3}
     yield: 3

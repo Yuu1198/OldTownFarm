@@ -13,28 +13,25 @@ public class Knife : ItemData
     {
         Crop crop = CropManager.instance.GetCropAtTile(targetTile);
 
-        if (crop.isHarvestable) // Check if harvestable on tile
+        if (crop != null )
         {
-            // Add harvest to inventory
-            List<HarvestItem> harvestList = crop.data.harvestItems;
-            foreach (HarvestItem harvest in harvestList)
+            if (crop.isHarvestable) // Check if harvestable on tile
             {
-                Item harvestItem = harvest.item;
-                // Adds as much items as crop can yield
-                for (int i = 0;  i < harvest.yield; i++)
+                // Add harvest to inventory
+                List<HarvestItem> harvestList = crop.data.harvestItems;
+                foreach (HarvestItem harvest in harvestList)
                 {
-                    GameManager.instance.player.inventoryManager.Add("Backpack", harvestItem);
+                    Item harvestItem = harvest.item;
+                    // Adds as much items as crop can yield
+                    for (int i = 0; i < harvest.yield; i++)
+                    {
+                        GameManager.instance.player.inventoryManager.Add("Backpack", harvestItem);
+                    }
                 }
+
+                // Delete crop on tile
+                CropManager.instance.RemoveCrop(crop);
             }
-
-            // Delete crop on tile
-            CropManager.instance.RemoveCrop(crop);
-
-            // Make Tile a Grass Tile
-            List<Tile> possibleGrassTiles = TileManager.instance.grassTiles;
-            Tile grassTileToSet = TileManager.instance.grassTiles[Random.Range(0, possibleGrassTiles.Count)];
-            TileManager.instance.SetTile(targetTile, grassTileToSet);
         }
-
     }
 }

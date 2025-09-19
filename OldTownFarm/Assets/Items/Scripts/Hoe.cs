@@ -9,6 +9,9 @@ public class Hoe : ItemData
      */
     public override void Use(Vector3Int targetTile)
     {
-        TileManager.instance.SetTile(targetTile, TileManager.instance.plowedTile);
+        if (TileManager.instance.GetTypeOfTile(targetTile) == TileManager.TileType.Grass)
+        {
+            TileManager.instance.SetTile(targetTile, TileManager.instance.plowedTile);
+        }
     }
 }

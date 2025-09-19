@@ -1,7 +1,7 @@
+using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Tilemaps;
-using System.Collections.Generic;
 
 public class TileManager : MonoBehaviour
 {
@@ -16,9 +16,19 @@ public class TileManager : MonoBehaviour
     [Header("Tile types:")]
     [SerializeField] public List<Tile> grassTiles;
     [SerializeField] public Tile plowedTile;
-    [SerializeField] public Tile plantedTile;
+    [SerializeField] public Tile wateredTile;
 
     private Vector3Int lastHighlightedTile;
+
+    private int daysTillFliedReset = 3;
+
+    public enum TileType
+    {
+        None,
+        Grass,
+        Plowed,
+        Watered
+    }
 
     private void Awake()
     {
@@ -46,6 +56,8 @@ public class TileManager : MonoBehaviour
                 interactableMap.SetTile(position, hiddenInteractableTile);
             }
         }
+
+        DayNightCycle.instance.OnDayChanged.AddListener(OnDayChangedHandler);
     }
 
     public string GetTileName(Vector3Int position)
@@ -61,6 +73,35 @@ public class TileManager : MonoBehaviour
         }
 
         return null;
+    }
+
+    public TileType GetTypeOfTile(Vector3Int position)
+    {
+        if (interactableMap != null)
+        {
+            TileBase tile = interactableMap.GetTile(position);
+
+            if (tile != null)
+            {
+                if (tile.name == plowedTile.name)
+                {
+                    return TileType.Plowed;
+                }
+                else if (tile.name == wateredTile.name)
+                {
+                    return TileType.Watered;
+                }
+                else
+                {
+                    return TileType.Grass;
+                }
+            }
+
+            return TileType.None;
+
+        }
+
+        return TileType.None;
     }
 
     public Vector3Int GetTargetTile(Vector3 playerPosition, Vector2Int facingDirection)
@@ -108,5 +149,67 @@ public class TileManager : MonoBehaviour
     public void SetTile(Vector3Int position, Tile newTile)
     {
         interactableMap.SetTile(position, newTile);
+    }
+
+    /// <summary>
+    /// Resets Tile back to Grass Tile when no Crop on Tile
+    /// </summary>
+    /// <param name="position"> Position of Tile</param>
+    private void ResetTile(Vector3Int position)
+    {
+        if (CropManager.instance.GetCropAtTile(position) == null)
+        {
+            Tile grassTileToSet = grassTiles[Random.Range(0, grassTiles.Count)];
+            SetTile(position, grassTileToSet);
+        }
+    }
+
+    /// <summary>
+    /// Set all Plowed Tiles to random Grass Tiles.
+    /// </summary>
+    private void ResetFields()
+    {
+        if (interactableMap != null)
+        {
+            BoundsInt bounds = interactableMap.cellBounds;
+
+            foreach (Vector3Int pos in bounds.allPositionsWithin)
+            {
+                TileBase tile = interactableMap.GetTile(pos);
+
+                if (tile != null && tile.name == plowedTile.name)
+                {
+                    ResetTile(pos);
+                }
+            }
+        }
+    }
+
+    /// <summary>
+    /// Set all Watered Tiles to Plowed Tiles.
+    /// </summary>
+    private void DryTiles()
+    {
+        if (interactableMap != null)
+        {
+            BoundsInt bounds = interactableMap.cellBounds;
+
+            foreach (Vector3Int pos in bounds.allPositionsWithin)
+            {
+                TileBase tile = interactableMap.GetTile(pos);
+
+                if (tile != null && tile.name == wateredTile.name)
+                {
+                    interactableMap.SetTile(pos, plowedTile);
+                }
+            }
+        }
+    }
+
+    private void OnDayChangedHandler(int day)
+    {
+        ResetFields();
+
+        DryTiles();
     }
 }
