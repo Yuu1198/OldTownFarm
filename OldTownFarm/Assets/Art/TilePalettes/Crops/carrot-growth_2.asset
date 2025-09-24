@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 13312, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: carrot-small
+  m_Name: carrot-growth_2
   m_EditorClassIdentifier: UnityEngine.dll::UnityEngine.Tilemaps.Tile
-  m_Sprite: {fileID: -4350115279957141132, guid: 5dc68f49d1f7e454b98e947d9eb88818, type: 3}
+  m_Sprite: {fileID: -1379545925, guid: 407e211733f0a3c4c9561d0370f909d3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Transform:
     e00: 1
