@@ -191,5 +191,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5450d390735c9424aa58fbff3727c643, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Item
-  data: {fileID: 11400000, guid: daccb6d11b6fc324faee0aff8842ce4c, type: 2}
+  data: {fileID: 11400000, guid: e18514d85c3077f4aa93eddc97009a9d, type: 2}
   rb2d: {fileID: 0}

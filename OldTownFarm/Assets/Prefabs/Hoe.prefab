@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 6683579004014436323}
   - component: {fileID: 428748360907034078}
-  - component: {fileID: 1099500135333578368}
-  - component: {fileID: 2999583879386811058}
+  - component: {fileID: 7552432536687412878}
   - component: {fileID: 5343094283295526259}
+  - component: {fileID: 2999583879386811058}
   - component: {fileID: 4107674283539475767}
   m_Layer: 0
   m_Name: Hoe
@@ -30,8 +30,8 @@ Transform:
   m_GameObject: {fileID: 7669820183700605903}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 2.52, y: 1.89, z: 0}
-  m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 5, y: 5, z: 5}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
@@ -88,13 +88,13 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.13, y: 0.15}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &1099500135333578368
+--- !u!61 &7552432536687412878
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -128,30 +128,18 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.0015290529, y: -0.002334118}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.75, y: 0.875}
-    newSize: {x: 1, y: 1}
+    oldSize: {x: 0.12, y: 0.14}
+    newSize: {x: 0.13, y: 0.15}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.7648529, y: 0.8879671}
+  m_Size: {x: 0.12, y: 0.14}
   m_EdgeRadius: 0
---- !u!114 &2999583879386811058
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7669820183700605903}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ab43feebb372d5a4da0e143a8c8d88d5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Collectable
 --- !u!50 &5343094283295526259
 Rigidbody2D:
   serializedVersion: 5
@@ -179,6 +167,18 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &2999583879386811058
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7669820183700605903}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab43feebb372d5a4da0e143a8c8d88d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Collectable
 --- !u!114 &4107674283539475767
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -191,5 +191,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5450d390735c9424aa58fbff3727c643, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Item
-  data: {fileID: 11400000, guid: 67fbd0069c29df74c969a130aa6a1050, type: 2}
+  data: {fileID: 11400000, guid: 14dca128d918bca44a5d8be988a670c4, type: 2}
   rb2d: {fileID: 0}

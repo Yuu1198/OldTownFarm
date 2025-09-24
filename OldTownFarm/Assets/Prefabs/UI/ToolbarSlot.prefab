@@ -67,7 +67,7 @@ MonoBehaviour:
       m_Calls: []
   m_Sprite: {fileID: 21300000, guid: ec56ac3d5e695914da9a342507968a46, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -170,6 +170,10 @@ MonoBehaviour:
   slotID: 0
   inventory:
     slots: []
+    selectedSlot:
+      itemData: {fileID: 0}
+      count: 0
+      maxAllowed: 99
   itemIcon: {fileID: 1848880363444137636}
   quantityText: {fileID: 1542022905720573144}
   highlight: {fileID: 4153462421166886435}

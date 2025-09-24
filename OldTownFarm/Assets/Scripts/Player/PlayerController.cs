@@ -30,18 +30,11 @@ public class PlayerController : MonoBehaviour
 
     private InputAction useTool;
 
-    private TileManager tileManager;
-
     private void Awake() 
     {
         playerControls = new PlayerInputActions();
 
         inventoryManager = GetComponent<InventoryManager>();
-    }
-
-    private void Start()
-    {
-        tileManager = GameManager.instance.tileManager;
     }
 
     private void OnEnable() 
@@ -70,7 +63,7 @@ public class PlayerController : MonoBehaviour
     void Update() 
     {
         Move();
-        tileManager.HighlightTile(transform.position, facingDirection, inventoryManager);
+        TileManager.instance.HighlightTile(transform.position, facingDirection, inventoryManager);
     }
 
     #region Movement
@@ -196,22 +189,21 @@ public class PlayerController : MonoBehaviour
 
     private void UseTool(InputAction.CallbackContext context)
     {
-        if (tileManager != null)
+        if (TileManager.instance != null)
         {
 
-            Vector3Int targetTile = tileManager.GetTargetTile(transform.position, facingDirection);
+            Vector3Int targetTile = TileManager.instance.GetTargetTile(transform.position, facingDirection);
 
             // Vector3Int position = new Vector3Int((int)transform.position.x, (int)transform.position.y, 0); // Player position (PLACEHOLDER: Change to tile in front of player)
 
-            // REFACTURE: Dont let player handle the tiles
-            string tileName = tileManager.GetTileName(targetTile);
+            // REFACTURE: Maybe add check if tile is interactable/usable by current tool
+            //string tileName = tileManager.GetTileName(targetTile);
 
-            if (!string.IsNullOrWhiteSpace(tileName))
+
+            if (inventoryManager.toolbar.selectedSlot != null &&
+                inventoryManager.toolbar.selectedSlot.itemData != null)
             {
-                if (tileName == "interactable" && inventoryManager.toolbar.selectedSlot != null && inventoryManager.toolbar.selectedSlot.itemName == "Hoe") // REFACTURE: no string Hoe here make it a enum with all tools
-                {
-                    tileManager.SetInteracted(targetTile);
-                }
+                inventoryManager.toolbar.selectedSlot.itemData.Use(targetTile);
             }
         }
     }

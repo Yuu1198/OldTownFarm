@@ -25,19 +25,19 @@ public class DayNightCycle : MonoBehaviour
 
     private int wakeUpTime = 7;
 
-    public static DayNightCycle Instance { get; private set; }
+    public static DayNightCycle instance { get; private set; }
 
     private void Awake()
     {
         // If there is an instance, and it's not me, delete myself.
 
-        if (Instance != null && Instance != this)
+        if (instance != null && instance != this)
         {
             Destroy(this);
         }
         else
         {
-            Instance = this;
+            instance = this;
         }
     }
 
@@ -138,8 +138,19 @@ public class DayNightCycle : MonoBehaviour
     {
         days++;
         OnDayChanged.Invoke(days);
-        hours = wakeUpTime;
-        OnHourChanged.Invoke(hours);
+        mins = 0;
+        if (hours >= wakeUpTime)
+        {
+            while (hours < 24)
+            {
+                OnHourChanged.Invoke(++hours);
+            }
+            hours = 0;
+        }
+        while (hours < wakeUpTime)
+        {
+            OnHourChanged.Invoke(++hours);
+        }
 
         ControlLight();
     }

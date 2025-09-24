@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 463dcde7ac77045439c98c5154018206, type: 3}
+  m_Name: Carrot
+  m_EditorClassIdentifier: Assembly-CSharp::Crop
+  timePerGrowthStage: 6
+  harvestItems:
+  - item: {fileID: 1109518836958464437, guid: 348aae2603c464e4fb09422119c626f0, type: 3}
+    yield: 3
+  - item: {fileID: 1109518836958464437, guid: 0e547adc1c093a741aa88c3f3867bc36, type: 3}
+    yield: 3
+  growthStages:
+  - {fileID: 11400000, guid: 1af40463bc9a9144dbfc076a3ce59faa, type: 2}
+  - {fileID: 11400000, guid: b65bc9a534e61ec4b862ae29b7239fa0, type: 2}
+  - {fileID: 11400000, guid: 40de8dd8410af4b4cad57f4a6d6d09cc, type: 2}
+  - {fileID: 11400000, guid: 3d60928bb7acac14a880f4d9bc48142d, type: 2}
+  withered: {fileID: 11400000, guid: 7c94e31ffc92279488f5bbd0fa9e7f69, type: 2}
