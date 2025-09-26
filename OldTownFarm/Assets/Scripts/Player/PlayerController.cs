@@ -2,6 +2,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
+using TMPro;
 
 public class PlayerController : MonoBehaviour
 {
@@ -191,43 +192,13 @@ public class PlayerController : MonoBehaviour
     {
         if (TileManager.instance != null)
         {
-
             Vector3Int targetTile = TileManager.instance.GetTargetTile(transform.position, facingDirection);
-
-            // Vector3Int position = new Vector3Int((int)transform.position.x, (int)transform.position.y, 0); // Player position (PLACEHOLDER: Change to tile in front of player)
-
-            // REFACTURE: Maybe add check if tile is interactable/usable by current tool
-            //string tileName = tileManager.GetTileName(targetTile);
-
 
             if (inventoryManager.toolbar.selectedSlot != null &&
                 inventoryManager.toolbar.selectedSlot.itemData != null)
             {
                 inventoryManager.toolbar.selectedSlot.itemData.Use(targetTile);
             }
-        }
-    }
-
-    // Drop Item in world (PLACEHOLDER)
-    public void DropItem(Item item)
-    {
-        Vector3 spawnLocation = transform.position;
-
-        // Offset
-        Vector3 spawnOffset = Random.insideUnitCircle * 1.5f;
-
-        // Spawn Item
-        Item droppedItem = Instantiate(item, spawnLocation + spawnOffset, Quaternion.identity);
-        // Make it mory fancy
-        droppedItem.rb2d.AddForce(spawnOffset * .2f, ForceMode2D.Impulse);
-    }
-
-    // Drop Item in world (PLACEHOLDER)
-    public void DropItem(Item item, int numToDrop)
-    {
-        for (int i = 0; i < numToDrop; i++)
-        {
-            DropItem(item);
         }
     }
 }
