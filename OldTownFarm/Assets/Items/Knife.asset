@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Knife
   itemName: Knife
   icon: {fileID: 21300000, guid: bc840f90fbdc93549af8e6e107788e0c, type: 3}
+  sellValueCopper: 1

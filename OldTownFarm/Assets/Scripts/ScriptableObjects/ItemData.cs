@@ -6,6 +6,8 @@ public class ItemData : ScriptableObject
     public string itemName = "Item Name";
     public Sprite icon;
 
+    public int sellValueCopper;
+
     /*
      * Implements the logic of the item (e.g. plowing functionality of hoe)
      */

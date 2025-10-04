@@ -30,12 +30,21 @@ public class PlayerController : MonoBehaviour
     private Vector2Int facingDirection = Vector2Int.down;
 
     private InputAction useTool;
+    private InputAction interact;
+
+    public Currency playerMoney;
 
     private void Awake() 
     {
         playerControls = new PlayerInputActions();
 
         inventoryManager = GetComponent<InventoryManager>();
+    }
+
+    private void Start()
+    {
+        // Startmoney
+        playerMoney = new Currency(0, 0, 0);
     }
 
     private void OnEnable() 
@@ -50,6 +59,9 @@ public class PlayerController : MonoBehaviour
         useTool = playerControls.Player.UseTool;
         useTool.Enable();
         useTool.performed += UseTool;
+
+        interact = playerControls.Player.Interact;
+        interact.Enable();
     }
 
     private void OnDisable() 
@@ -58,6 +70,7 @@ public class PlayerController : MonoBehaviour
         moveFaster.Disable();
 
         useTool.Disable();
+        interact.Disable();
     }
 
     // Update is called once per frame
@@ -200,5 +213,15 @@ public class PlayerController : MonoBehaviour
                 inventoryManager.toolbar.selectedSlot.itemData.Use(targetTile);
             }
         }
+    }
+
+    public void SubscribeToInteract(System.Action<InputAction.CallbackContext> action)
+    {
+        interact.performed += action;
+    }
+
+    public void UnsubscribeFromInteract(System.Action<InputAction.CallbackContext> action)
+    {
+        interact.performed -= action;
     }
 }
