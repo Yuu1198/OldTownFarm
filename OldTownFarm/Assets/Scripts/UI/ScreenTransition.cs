@@ -9,6 +9,8 @@ public class ScreenTransition : MonoBehaviour
     [SerializeField] private Image transitionBackground;
     [SerializeField] private float transitionDuration = 0.5f;
 
+    [SerializeField] private Image nightBackground;
+
     private void Awake()
     {
         // If there is an instance, and it's not me, delete myself.
@@ -26,15 +28,15 @@ public class ScreenTransition : MonoBehaviour
     public IEnumerator FadeOutIn(System.Action onFadeComplete)
     {
         transitionBackground.gameObject.SetActive(true);
-        yield return Fade(1);
+        yield return Fade(1, transitionBackground);
         onFadeComplete?.Invoke();
-        yield return Fade(0);
+        yield return Fade(0, transitionBackground);
         transitionBackground.gameObject.SetActive(false);
     }
 
-    private IEnumerator Fade(float targetAlpha)
+    private IEnumerator Fade(float targetAlpha, Image background)
     {
-        Color color = transitionBackground.color;
+        Color color = background.color;
         float startingAlpha = color.a;
         float time = 0f;
 
@@ -43,11 +45,27 @@ public class ScreenTransition : MonoBehaviour
             time += Time.deltaTime;
             float t = time / transitionDuration;
             color.a = Mathf.Lerp(color.a, startingAlpha, t);
-            transitionBackground.color = color;
+            background.color = color;
             yield return null;
         }
 
         color.a = targetAlpha;
-        transitionBackground.color = color;
+        background.color = color;
+    }
+
+    public IEnumerator FadeNightBackground(System.Action onFadeComplete, bool fadeIn)
+    {
+        if (fadeIn)
+        {
+            nightBackground.gameObject.SetActive(true);
+            yield return Fade(1, nightBackground);
+        }
+        else
+        {
+            yield return Fade(0, nightBackground);
+            nightBackground.gameObject.SetActive(false);
+        }
+
+        onFadeComplete?.Invoke();
     }
 }

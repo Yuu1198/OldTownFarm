@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
+using TMPro;
 
 public class UI_Manager : MonoBehaviour
 {
@@ -22,6 +23,8 @@ public class UI_Manager : MonoBehaviour
     private InputAction dragOneItem;
     public static bool dragSingle;
 
+    [SerializeField] private TextMeshProUGUI moneyText;
+
     private void Awake()
     {
         playerControls = new PlayerInputActions();
@@ -31,6 +34,7 @@ public class UI_Manager : MonoBehaviour
 
     private void OnEnable()
     {
+        // Inventory
         openInventory = playerControls.UI.OpenInventory;
         openInventory.Enable();
         openInventory.performed += OpenInventory;
@@ -39,6 +43,13 @@ public class UI_Manager : MonoBehaviour
         dragOneItem.Enable();
         dragOneItem.performed += HandleDrag;
         dragOneItem.canceled += HandleDrag;
+
+        // Money
+        if (PlayerMoneyManager.instance != null)
+        {
+            PlayerMoneyManager.instance.OnMoneyChanged += UpdateMoneyText;
+            
+        }
     }
 
     private void OnDisable()
@@ -113,5 +124,10 @@ public class UI_Manager : MonoBehaviour
                 inventoryUIByName.Add(ui.inventoryName, ui);
             }
         }
+    }
+
+    private void UpdateMoneyText()
+    {
+        moneyText.text = PlayerMoneyManager.instance.GetMoneyString();
     }
 }

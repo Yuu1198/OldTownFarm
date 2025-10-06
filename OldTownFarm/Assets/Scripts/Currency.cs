@@ -69,4 +69,9 @@ public struct Currency
         silver = totalCopper / CopperPerSilver;
         copper = totalCopper % CopperPerSilver;
     }
+
+    public string GetMoneyString()
+    {
+        return gold.ToString() + "g" + silver.ToString() + "s" + copper.ToString() + "c";
+    }
 }

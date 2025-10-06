@@ -32,19 +32,11 @@ public class PlayerController : MonoBehaviour
     private InputAction useTool;
     private InputAction interact;
 
-    public Currency playerMoney;
-
     private void Awake() 
     {
         playerControls = new PlayerInputActions();
 
         inventoryManager = GetComponent<InventoryManager>();
-    }
-
-    private void Start()
-    {
-        // Startmoney
-        playerMoney = new Currency(0, 0, 0);
     }
 
     private void OnEnable() 
