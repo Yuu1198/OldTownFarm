@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::HoeItemData
   itemName: Hoe
   icon: {fileID: 8834441656716106029, guid: 89aa6e646d678644f87f0175ddf4b04d, type: 3}
+  sellValueCopper: 1

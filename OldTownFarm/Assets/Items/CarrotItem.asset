@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CropSO
   itemName: Carrot
   icon: {fileID: 2950869812727453837, guid: 4cb60fcdbebd81c4f90fa59801cc1f34, type: 3}
-  gold: 1
+  sellValueCopper: 50

@@ -2,6 +2,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
+using TMPro;
 
 public class PlayerController : MonoBehaviour
 {
@@ -29,6 +30,7 @@ public class PlayerController : MonoBehaviour
     private Vector2Int facingDirection = Vector2Int.down;
 
     private InputAction useTool;
+    private InputAction interact;
 
     private void Awake() 
     {
@@ -49,6 +51,9 @@ public class PlayerController : MonoBehaviour
         useTool = playerControls.Player.UseTool;
         useTool.Enable();
         useTool.performed += UseTool;
+
+        interact = playerControls.Player.Interact;
+        interact.Enable();
     }
 
     private void OnDisable() 
@@ -57,6 +62,7 @@ public class PlayerController : MonoBehaviour
         moveFaster.Disable();
 
         useTool.Disable();
+        interact.Disable();
     }
 
     // Update is called once per frame
@@ -191,14 +197,7 @@ public class PlayerController : MonoBehaviour
     {
         if (TileManager.instance != null)
         {
-
             Vector3Int targetTile = TileManager.instance.GetTargetTile(transform.position, facingDirection);
-
-            // Vector3Int position = new Vector3Int((int)transform.position.x, (int)transform.position.y, 0); // Player position (PLACEHOLDER: Change to tile in front of player)
-
-            // REFACTURE: Maybe add check if tile is interactable/usable by current tool
-            //string tileName = tileManager.GetTileName(targetTile);
-
 
             if (inventoryManager.toolbar.selectedSlot != null &&
                 inventoryManager.toolbar.selectedSlot.itemData != null)
@@ -208,26 +207,13 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    // Drop Item in world (PLACEHOLDER)
-    public void DropItem(Item item)
+    public void SubscribeToInteract(System.Action<InputAction.CallbackContext> action)
     {
-        Vector3 spawnLocation = transform.position;
-
-        // Offset
-        Vector3 spawnOffset = Random.insideUnitCircle * 1.5f;
-
-        // Spawn Item
-        Item droppedItem = Instantiate(item, spawnLocation + spawnOffset, Quaternion.identity);
-        // Make it mory fancy
-        droppedItem.rb2d.AddForce(spawnOffset * .2f, ForceMode2D.Impulse);
+        interact.performed += action;
     }
 
-    // Drop Item in world (PLACEHOLDER)
-    public void DropItem(Item item, int numToDrop)
+    public void UnsubscribeFromInteract(System.Action<InputAction.CallbackContext> action)
     {
-        for (int i = 0; i < numToDrop; i++)
-        {
-            DropItem(item);
-        }
+        interact.performed -= action;
     }
 }
