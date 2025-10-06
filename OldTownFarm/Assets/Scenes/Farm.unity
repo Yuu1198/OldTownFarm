@@ -13348,7 +13348,6 @@ GameObject:
   - component: {fileID: 714671770}
   - component: {fileID: 714671771}
   - component: {fileID: 714671772}
-  - component: {fileID: 714671773}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -13383,6 +13382,10 @@ MonoBehaviour:
   playerAnimations: {fileID: 714671767}
   moveSpeed: 2
   inventoryManager: {fileID: 0}
+  playerMoney:
+    gold: 0
+    silver: 0
+    copper: 0
 --- !u!212 &714671766
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -13611,22 +13614,6 @@ MonoBehaviour:
       count: 0
       maxAllowed: 99
   toolbarSlotCount: 9
---- !u!114 &714671773
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 714671764}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 901ca9fa2ac00014bbea2ce934b76c64, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Gold
-  gold: 0
-  silver: 0
-  copper: 40200
-  goldText: {fileID: 928386243}
 --- !u!1 &715231872
 GameObject:
   m_ObjectHideFlags: 0
@@ -24671,6 +24658,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 648664852971597837, guid: 4bef6367ddb086342900d373cc271350, type: 3}
+      propertyPath: toolbarUI
+      value: 
+      objectReference: {fileID: 1583213860}
     - target: {fileID: 711488286868680325, guid: 4bef6367ddb086342900d373cc271350, type: 3}
       propertyPath: m_LocalPosition.x
       value: 3.47

@@ -5,9 +5,10 @@ public class Chest : MonoBehaviour
 {
     [SerializeField] private Sprite open;
     [SerializeField] private Sprite close;
+    private SpriteRenderer spriteRenderer;
 
     private PlayerController player;
-    private SpriteRenderer spriteRenderer;
+    [SerializeField] private Inventory_UI toolbarUI;
 
     public Currency chestMoney;
 
@@ -28,13 +29,6 @@ public class Chest : MonoBehaviour
             if (player != null)
             {
                 player.SubscribeToInteract(OnInteract);
-
-
-                if (player.inventoryManager.toolbar.selectedSlot != null &&
-                player.inventoryManager.toolbar.selectedSlot.itemData != null)
-                {
-
-                }
             }
         }
     }
@@ -69,6 +63,7 @@ public class Chest : MonoBehaviour
 
                 // Remove item from inventory
                 equippedItem.RemoveItem();
+                toolbarUI.Refresh();
             }
         }
     }
