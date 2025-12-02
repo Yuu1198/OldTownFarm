@@ -12903,7 +12903,7 @@ MonoBehaviour:
   dayDisplay: {fileID: 571788657}
   tick: 5
   mins: 0
-  hours: 5
+  hours: 7
   days: 1
   activateLights: 1
   nightLights:
