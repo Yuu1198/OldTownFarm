@@ -35,6 +35,7 @@ public class PlayerController : MonoBehaviour
 
     public int currentEnergy;
     public int maxEnergy;
+    public EnergyBar energyBar;
     public Bed bedPosition;
     public bool fainted;
 
@@ -45,6 +46,7 @@ public class PlayerController : MonoBehaviour
         inventoryManager = GetComponent<InventoryManager>();
 
         currentEnergy = maxEnergy;
+        energyBar.UpdateBar(currentEnergy);
     }
 
     private void OnEnable() 
@@ -230,6 +232,7 @@ public class PlayerController : MonoBehaviour
     public void ExtractEnergy(int amount)
     {
         currentEnergy -= amount;
+        energyBar.UpdateBar(currentEnergy);
 
         if (currentEnergy <= 0)
         {
@@ -248,5 +251,22 @@ public class PlayerController : MonoBehaviour
             // energy is half full :<
             fainted = true;
         }
+    }
+
+    /// <summary>
+    /// Reset after going to bed.
+    /// </summary>
+    public void ResetEnergy()
+    {
+        if (fainted)
+        {
+            currentEnergy = maxEnergy / 2;
+        }
+        else
+        {
+            currentEnergy = maxEnergy;
+        }
+
+        energyBar.UpdateBar(currentEnergy);
     }
 }
