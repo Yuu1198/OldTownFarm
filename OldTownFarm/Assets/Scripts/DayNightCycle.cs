@@ -137,7 +137,6 @@ public class DayNightCycle : MonoBehaviour
     public void ProgressToNextDay()
     {
         days++;
-        OnDayChanged.Invoke(days);
         mins = 0;
         if (hours >= wakeUpTime)
         {
@@ -153,5 +152,7 @@ public class DayNightCycle : MonoBehaviour
         }
 
         ControlLight();
+
+        OnDayChanged.Invoke(days);
     }
 }
