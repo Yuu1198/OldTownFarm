@@ -44,6 +44,16 @@ public class Bed : MonoBehaviour
     {
         continueButton.interactable = false;
         earnedMoneyText.gameObject.SetActive(false);
+        
+        // Reset energy
+        if (player.fainted)
+        {
+            player.currentEnergy = player.maxEnergy / 2;
+        }
+        else
+        {
+            player.currentEnergy = player.maxEnergy;
+        }
 
         StartCoroutine(ScreenTransition.Instance.FadeNightBackground(() =>
         {

@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using TMPro;
+using UnityEngine.UIElements;
 
 public class PlayerController : MonoBehaviour
 {
@@ -32,11 +33,18 @@ public class PlayerController : MonoBehaviour
     private InputAction useTool;
     private InputAction interact;
 
+    public int currentEnergy;
+    public int maxEnergy;
+    public Bed bedPosition;
+    public bool fainted;
+
     private void Awake() 
     {
         playerControls = new PlayerInputActions();
 
         inventoryManager = GetComponent<InventoryManager>();
+
+        currentEnergy = maxEnergy;
     }
 
     private void OnEnable() 
@@ -203,6 +211,8 @@ public class PlayerController : MonoBehaviour
                 inventoryManager.toolbar.selectedSlot.itemData != null)
             {
                 inventoryManager.toolbar.selectedSlot.itemData.Use(targetTile);
+
+                ExtractEnergy(5); // Use energy when use tool
             }
         }
     }
@@ -215,5 +225,28 @@ public class PlayerController : MonoBehaviour
     public void UnsubscribeFromInteract(System.Action<InputAction.CallbackContext> action)
     {
         interact.performed -= action;
+    }
+
+    public void ExtractEnergy(int amount)
+    {
+        currentEnergy -= amount;
+
+        if (currentEnergy <= 0)
+        {
+            SetCanMove(false);
+
+            // fade screen to black
+            StartCoroutine(ScreenTransition.Instance.FadeNightBackground(() => {
+
+                // teleport player to bed
+                this.gameObject.transform.position = bedPosition.transform.position;
+
+            }, true));
+
+            // progress to next day (automatisch?)
+
+            // energy is half full :<
+            fainted = true;
+        }
     }
 }

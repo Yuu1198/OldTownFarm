@@ -13385,6 +13385,10 @@ MonoBehaviour:
   playerAnimations: {fileID: 714671767}
   moveSpeed: 2
   inventoryManager: {fileID: 0}
+  currentEnergy: 0
+  maxEnergy: 100
+  bedPosition: {fileID: 926373965}
+  fainted: 0
 --- !u!212 &714671766
 SpriteRenderer:
   m_ObjectHideFlags: 0
