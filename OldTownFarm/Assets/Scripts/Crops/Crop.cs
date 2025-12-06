@@ -7,7 +7,7 @@ public class Crop
     public int currentGrowthTime { get; private set; } = 0;
     public int currentGrowthStage { get; private set; } = 0;
 
-    private int timeWithoutWater = 0;
+    public int timeWithoutWater = 0;
     private int timeHarvestable = 0;
 
     public Crop(CropData data, Vector3Int position)

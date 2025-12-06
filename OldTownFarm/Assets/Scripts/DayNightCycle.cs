@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -11,6 +12,8 @@ public class DayNightCycle : MonoBehaviour
     public TextMeshProUGUI timeDisplay; // Display Time
     public TextMeshProUGUI dayDisplay; // Display Day
     private Light2D globalLight;
+
+    private float brightness;
 
     public float tick; // Controls time scale (higher tick = faster time)
     public float mins;
@@ -24,6 +27,12 @@ public class DayNightCycle : MonoBehaviour
     public UnityEvent<int> OnDayChanged;
 
     private int wakeUpTime = 7;
+
+    public float minDelay = 3f;
+    public float maxDelay = 10f;
+    public float flashIntensity = 8f;
+    private float lightingTimer = 5f;
+    
 
     public static DayNightCycle instance { get; private set; }
 
@@ -75,11 +84,55 @@ public class DayNightCycle : MonoBehaviour
         ControlLight(); // changes lighting after calculation
     }
 
+    /// <summary>
+    /// Resets lighting timer to random number.
+    /// </summary>
+    private void ResetLightingTimer()
+    {
+        lightingTimer = Random.Range(minDelay, maxDelay);
+    }
+
+    /// <summary>
+    /// LIGHTNING
+    /// </summary>
+    /// <returns></returns>
+    IEnumerator FLASH()
+    {
+        // first BOOM
+        globalLight.intensity = flashIntensity;
+        yield return new WaitForSeconds(0.06f);
+
+        globalLight.intensity = brightness;
+        yield return new WaitForSeconds(0.05f);
+
+        // second BOOM
+        globalLight.intensity = flashIntensity * 0.75f;
+        yield return new WaitForSeconds(0.1f);
+
+        globalLight.intensity = brightness;
+    }
+
     private void ControlLight()
     {
+        brightness = Weather.instance.GetCurrentWeatherData().brightness;
+
+        // STORM
+        if (Weather.instance.currentWeather == WeatherType.STORM)
+        {
+            // Update timer
+            lightingTimer -= Time.deltaTime;
+            if (lightingTimer <= 0)
+            {
+                // BOOM
+                StartCoroutine(FLASH());
+
+                ResetLightingTimer();
+            }
+        }
+
         if (hours == GetDawnHour()) // Dawn
         {
-            globalLight.intensity = 0.005f + mins / 60.3f;
+            globalLight.intensity = (0.005f + mins / 60.3f) * brightness;
             if (activateLights == true)
             {
                 if (mins > 30)
@@ -92,13 +145,13 @@ public class DayNightCycle : MonoBehaviour
                 }
             }
         }
-        else if (hours > GetDawnHour() && hours < GetDuskHour() && globalLight.intensity < 1f)
+        else if (hours > GetDawnHour() && hours < GetDuskHour() && globalLight.intensity != brightness && globalLight.intensity <= 1)
         {
-            globalLight.intensity = 1f;
+            globalLight.intensity = brightness;
         }
         else if (hours == GetDuskHour()) // Dusk
         {
-            globalLight.intensity = 1 - mins / 60.3f;
+            globalLight.intensity = (1 - mins / 60.3f) * brightness;
 
             if (activateLights == false)
             {
@@ -112,9 +165,9 @@ public class DayNightCycle : MonoBehaviour
                 }
             }
         }
-        else if ((hours > GetDuskHour() || hours < GetDawnHour()) && globalLight.intensity > 0.005f)
+        else if ((hours > GetDuskHour() || hours < GetDawnHour()) && globalLight.intensity > 0.005f * brightness)
         {
-            globalLight.intensity = 0.005f;
+            globalLight.intensity = 0.005f * brightness;
         }
     }
 
@@ -150,9 +203,8 @@ public class DayNightCycle : MonoBehaviour
         {
             OnHourChanged.Invoke(++hours);
         }
+        OnDayChanged.Invoke(days);
 
         ControlLight();
-
-        OnDayChanged.Invoke(days);
     }
 }
