@@ -21,7 +21,10 @@ public class EnergyBar : MonoBehaviour
 
     public void UpdateBar(int energyValue)
     {
-        slider.value = energyValue;
+        if (slider != null)
+        {
+            slider.value = energyValue;
+        }
 
         if (energyValue >= 50)
         {

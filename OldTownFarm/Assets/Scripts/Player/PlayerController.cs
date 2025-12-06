@@ -261,6 +261,7 @@ public class PlayerController : MonoBehaviour
         if (fainted)
         {
             currentEnergy = maxEnergy / 2;
+            fainted = false;
         }
         else
         {
