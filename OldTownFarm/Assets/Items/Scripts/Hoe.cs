@@ -11,7 +11,14 @@ public class Hoe : ItemData
     {
         if (TileManager.instance.GetTypeOfTile(targetTile) == TileManager.TileType.Grass)
         {
-            TileManager.instance.SetTile(targetTile, TileManager.instance.plowedTile);
+            if (Weather.instance.GetCurrentWeatherData().isRaining) // Water Tile when rain
+            {
+                TileManager.instance.SetTile(targetTile, TileManager.instance.wateredTile);
+            }
+            else
+            {
+                TileManager.instance.SetTile(targetTile, TileManager.instance.plowedTile);
+            }   
         }
     }
 }
