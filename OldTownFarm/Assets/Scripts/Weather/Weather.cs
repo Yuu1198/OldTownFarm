@@ -1,10 +1,11 @@
 using System.Collections.Generic;
-using UnityEngine;
-using static UnityEngine.Rendering.DebugUI;
-using UnityEngine.InputSystem;
-using UnityEngine.UI;
-using Unity.VisualScripting;
 using System.Linq;
+using Unity.VisualScripting;
+using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.Rendering.Universal;
+using UnityEngine.UI;
+using static UnityEngine.Rendering.DebugUI;
 
 
 public enum WeatherType
@@ -57,6 +58,8 @@ public class Weather : MonoBehaviour
 
         DayNightCycle.instance.OnDayChanged.AddListener(OnDayChanged);
     }
+
+
 
     private void OnDayChanged(int day)
     {

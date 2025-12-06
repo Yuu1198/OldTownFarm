@@ -12992,6 +12992,9 @@ MonoBehaviour:
   OnDayChanged:
     m_PersistentCalls:
       m_Calls: []
+  minDelay: 3
+  maxDelay: 10
+  flashIntensity: 8
 --- !u!114 &619394804
 MonoBehaviour:
   m_ObjectHideFlags: 0
