@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using UnityEngine.UIElements;
 
 public class TileManager : MonoBehaviour
 {
@@ -21,6 +22,8 @@ public class TileManager : MonoBehaviour
     private Vector3Int lastHighlightedTile;
 
     private int daysTillFieldReset = 3;
+
+    public float witheredWithStormChance = 50f;
 
     public enum TileType
     {
@@ -214,6 +217,29 @@ public class TileManager : MonoBehaviour
         // Check weather
         if (Weather.instance.GetCurrentWeatherData().isRaining)
         {
+            // BOOM
+            if (Weather.instance.currentWeather == WeatherType.STORM)
+            {
+                if (interactableMap != null)
+                {
+                    BoundsInt bounds = interactableMap.cellBounds;
+
+                    foreach (Vector3Int pos in bounds.allPositionsWithin)
+                    {
+                        Crop crop = CropManager.instance.GetCropAtTile(pos);
+                        if (crop != null)
+                        {
+                            int roll = Random.Range(0, 100);
+                            if (roll < witheredWithStormChance)
+                            {
+                                crop.timeWithoutWater = 42; // Pfusch to fix bug
+                                CropManager.instance.SetWithered(crop); // Dead x-x
+                            }
+                        }
+                    }
+                }
+            }
+
             // Rain -> Plowed Tile to Watered Tile
             if (interactableMap != null)
             {

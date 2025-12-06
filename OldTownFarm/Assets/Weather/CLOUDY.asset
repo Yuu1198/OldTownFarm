@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::WeatherData
   type: 1
   icon: {fileID: -8930032316952095649, guid: 64631ff4ba41d7f48856beb06d4593fc, type: 3}
-  probability: 0
+  probability: 20
   brightness: 0.5
   isRaining: 0

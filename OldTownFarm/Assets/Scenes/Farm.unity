@@ -34335,6 +34335,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 0d36a448e026861448a5f1622701c847, type: 2}
   plowedTile: {fileID: 11400000, guid: d980e0ffad51c9c4c8bc64fee6c5af24, type: 2}
   wateredTile: {fileID: 11400000, guid: 080911d68101286408bb1d74eb3919e5, type: 2}
+  witheredWithStormChance: 50
 --- !u!114 &2108039482
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -31,7 +31,7 @@ public class DayNightCycle : MonoBehaviour
     public float minDelay = 3f;
     public float maxDelay = 10f;
     public float flashIntensity = 8f;
-    private float lightingTimer = 10f;
+    private float lightingTimer = 5f;
     
 
     public static DayNightCycle instance { get; private set; }
