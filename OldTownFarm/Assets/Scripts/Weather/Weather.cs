@@ -30,6 +30,9 @@ public class Weather : MonoBehaviour
 
     public ParticleSystem rainParticles;
 
+    [SerializeField]
+    private Image weatherUI;
+
     public WeatherType currentWeather;
 
     public static Weather instance { get; private set; }
@@ -50,19 +53,16 @@ public class Weather : MonoBehaviour
     public void Start()
     {
         currentWeather = WeatherType.SUNNY;
-        DayNightCycle.instance.OnDayChanged.AddListener(OnDayChanged);
-    }
+        weatherUI.sprite = GetCurrentWeatherData().icon;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        DayNightCycle.instance.OnDayChanged.AddListener(OnDayChanged);
     }
 
     private void OnDayChanged(int day)
     {
         // Choose Weather
         currentWeather = GetRandomWeatherType();
+        weatherUI.sprite = GetCurrentWeatherData().icon;
 
         if (GetCurrentWeatherData().showRainEffect)
         {
