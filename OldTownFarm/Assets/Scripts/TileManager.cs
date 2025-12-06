@@ -206,10 +206,40 @@ public class TileManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Update Tiles based on rain or no rain.
+    /// </summary>
+    private void UpdateTilesToWeather()
+    {
+        // Check weather
+        if (Weather.instance.GetCurrentWeatherData().isRaining)
+        {
+            // Rain -> Plowed Tile to Watered Tile
+            if (interactableMap != null)
+            {
+                BoundsInt bounds = interactableMap.cellBounds;
+
+                foreach (Vector3Int pos in bounds.allPositionsWithin)
+                {
+                    TileBase tile = interactableMap.GetTile(pos);
+
+                    if (tile != null && tile.name == plowedTile.name)
+                    {
+                        interactableMap.SetTile(pos, wateredTile);
+                    }
+                }
+            }
+        }
+        else // no rain
+        {
+            DryTiles();
+        }
+    }
+
     private void OnDayChangedHandler(int day)
     {
         ResetFields();
 
-        DryTiles();
+        UpdateTilesToWeather();
     }
 }

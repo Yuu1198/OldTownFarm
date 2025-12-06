@@ -23,7 +23,7 @@ public class HouseEnterLeave : MonoBehaviour
                     }
                     else
                     {
-                        if (Weather.instance.GetCurrentWeatherData().showRainEffect)
+                        if (Weather.instance.GetCurrentWeatherData().isRaining)
                         {
                             Weather.instance.rainParticles.gameObject.SetActive(true);
                             Weather.instance.rainParticles.Simulate(100);

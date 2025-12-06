@@ -64,7 +64,7 @@ public class Weather : MonoBehaviour
         currentWeather = GetRandomWeatherType();
         weatherUI.sprite = GetCurrentWeatherData().icon;
 
-        if (GetCurrentWeatherData().showRainEffect)
+        if (GetCurrentWeatherData().isRaining)
         {
             rainParticles.Play();
             rainParticles.gameObject.SetActive(false);

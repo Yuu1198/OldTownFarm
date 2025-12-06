@@ -7,5 +7,5 @@ public class WeatherData : ScriptableObject
     public Sprite icon;
     public int probability;
     public float brightness;
-    public bool showRainEffect;
+    public bool isRaining;
 }

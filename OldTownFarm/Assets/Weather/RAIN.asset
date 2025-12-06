@@ -16,4 +16,4 @@ MonoBehaviour:
   icon: {fileID: -3665523868638927780, guid: 64631ff4ba41d7f48856beb06d4593fc, type: 3}
   probability: 20
   brightness: 0.33
-  showRainEffect: 1
+  isRaining: 1
