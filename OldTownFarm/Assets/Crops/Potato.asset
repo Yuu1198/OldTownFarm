@@ -10,17 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 463dcde7ac77045439c98c5154018206, type: 3}
-  m_Name: Carrot
+  m_Name: Potato
   m_EditorClassIdentifier: Assembly-CSharp::Crop
-  timePerGrowthStage: 10
+  timePerGrowthStage: 20
   harvestItems:
   - item: {fileID: 1109518836958464437, guid: 906ca7835ac919e46af6827a6f8479aa, type: 3}
-    yield: 3
-  - item: {fileID: 1109518836958464437, guid: 0e547adc1c093a741aa88c3f3867bc36, type: 3}
-    yield: 3
+    yield: 1
+  - item: {fileID: 1109518836958464437, guid: 28c8f63bfd4a21344a8a13363b9aff3d, type: 3}
+    yield: 4
   growthStages:
-  - {fileID: 11400000, guid: 1af40463bc9a9144dbfc076a3ce59faa, type: 2}
-  - {fileID: 11400000, guid: b65bc9a534e61ec4b862ae29b7239fa0, type: 2}
-  - {fileID: 11400000, guid: 40de8dd8410af4b4cad57f4a6d6d09cc, type: 2}
-  - {fileID: 11400000, guid: 3d60928bb7acac14a880f4d9bc48142d, type: 2}
+  - {fileID: 11400000, guid: c2aed3b159b4a564ea6ed8829aa8b788, type: 2}
+  - {fileID: 11400000, guid: 8ccffb7fda373914b972de51e5dc0ae4, type: 2}
+  - {fileID: 11400000, guid: 51b5e2eff225ea64ba25db24b5027eed, type: 2}
+  - {fileID: 11400000, guid: 2a096e7789ea1b446ab1cc0e17905c45, type: 2}
   withered: {fileID: 11400000, guid: 7c94e31ffc92279488f5bbd0fa9e7f69, type: 2}
