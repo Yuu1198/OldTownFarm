@@ -20,8 +20,14 @@ public class Vendor : MonoBehaviour
         vendorDialogue[0] = new DialogueData("Hello my old friend!!!! :]", string.Empty, string.Empty, null, null);
         vendorDialogue[1] = new DialogueData("Sell or buy????", "Yes", "No", OpenSellMenu, OpenBuyMenu);
 
-        // Fill Vendor Inventory
+        
         vendorInventory = GameManager.instance.player.inventoryManager.GetInventoryByName("Vendor");
+        AddItemsToVendorInventory();
+    }
+
+    // Fill Vendor Inventory MAKE RANDOM IN FUTURE TOOODOOO and make it new every day
+    private void AddItemsToVendorInventory()
+    {
         vendorInventory.AddItem(possibleItemsToBuy[0], 1);
         vendorInventory.AddItem(possibleItemsToBuy[1], 1);
         vendorInventory.AddItem(possibleItemsToBuy[0], 1);
