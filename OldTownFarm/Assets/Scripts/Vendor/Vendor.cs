@@ -29,8 +29,9 @@ public class Vendor : MonoBehaviour
     private void AddItemsToVendorInventory()
     {
         vendorInventory.AddItem(possibleItemsToBuy[0], 1);
-        vendorInventory.AddItem(possibleItemsToBuy[1], 1);
+        vendorInventory.AddItem(possibleItemsToBuy[1], 2, 2);
         vendorInventory.AddItem(possibleItemsToBuy[0], 1);
+        vendorInventory.AddItem(possibleItemsToBuy[1], 1, 1);
     }
 
     void OpenBuyMenu()

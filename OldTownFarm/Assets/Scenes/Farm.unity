@@ -8808,6 +8808,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5588042421536933109, guid: 17b7d4f0e389b4e4d8da5e63e2f389b6, type: 3}
+      propertyPath: inventory.selectedSlot.count
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5588042421536933109, guid: 17b7d4f0e389b4e4d8da5e63e2f389b6, type: 3}
+      propertyPath: inventory.selectedSlot.itemData
+      value: 
+      objectReference: {fileID: 11400000, guid: e18514d85c3077f4aa93eddc97009a9d, type: 2}
     - target: {fileID: 6021421944100659729, guid: 17b7d4f0e389b4e4d8da5e63e2f389b6, type: 3}
       propertyPath: m_Delegates.Array.size
       value: 0
@@ -11530,6 +11538,14 @@ PrefabInstance:
       propertyPath: slotID
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5588042421536933109, guid: 17b7d4f0e389b4e4d8da5e63e2f389b6, type: 3}
+      propertyPath: inventory.selectedSlot.count
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5588042421536933109, guid: 17b7d4f0e389b4e4d8da5e63e2f389b6, type: 3}
+      propertyPath: inventory.selectedSlot.itemData
+      value: 
+      objectReference: {fileID: 11400000, guid: 015c3ac2f1785e74fa777b41c94d2804, type: 2}
     - target: {fileID: 6021421944100659729, guid: 17b7d4f0e389b4e4d8da5e63e2f389b6, type: 3}
       propertyPath: m_Delegates.Array.size
       value: 1
@@ -34425,6 +34441,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0083a343b33a212438b1f50cc55e8b91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Vendor
+  possibleItemsToBuy:
+  - {fileID: 11400000, guid: e18514d85c3077f4aa93eddc97009a9d, type: 2}
+  - {fileID: 11400000, guid: 015c3ac2f1785e74fa777b41c94d2804, type: 2}
+  - {fileID: 11400000, guid: 4ea35a0f15bc7cc4e886e6fc60b3aea5, type: 2}
+  - {fileID: 11400000, guid: 14dca128d918bca44a5d8be988a670c4, type: 2}
+  - {fileID: 11400000, guid: 477099edbfde4cc4eb104fdb0c1bdc38, type: 2}
+  vendorInventory:
+    slots: []
+    selectedSlot:
+      itemData: {fileID: 0}
+      count: 0
+      maxAllowed: 99
+    sellInventory: 0
+    buyInventory: 0
 --- !u!58 &1211295820
 CircleCollider2D:
   m_ObjectHideFlags: 0

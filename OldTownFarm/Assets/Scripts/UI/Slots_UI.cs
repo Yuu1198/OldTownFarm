@@ -39,21 +39,42 @@ public class Slots_UI : MonoBehaviour, IPointerClickHandler
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        if (inventory.sellInventory)
+        if (slotData != null)
         {
-            // Sell item on right click
-            if (eventData.button == PointerEventData.InputButton.Right)
+            if (inventory.sellInventory)
             {
-                Debug.Log("JUHU");
+                // Sell item on right click
+                if (eventData.button == PointerEventData.InputButton.Right)
+                {
+                    int sellValue = slotData.itemData.sellValueCopper;
 
-                int sellValue = slotData.itemData.sellValueCopper;
+                    PlayerMoneyManager.instance.AddMoney(new Currency(0, 0, sellValue));
 
-                PlayerMoneyManager.instance.AddMoney(new Currency(0, 0, sellValue));
+                    slotData.RemoveItem();
+                    UI_Manager.instance.inventoryUIByName["Backpack"].Refresh();
+                }
+            }
+            if (inventory.buyInventory)
+            {
+                // Buy item on right click
+                if (eventData.button == PointerEventData.InputButton.Right)
+                {
+                    int buyValue = slotData.itemData.sellValueCopper;
 
-                slotData.RemoveItem();
-                SetEmpty();
+                    if (buyValue > PlayerMoneyManager.instance.GetTotalCopper())
+                    {
+                        Debug.Log("Nicht genug Geld");
+                        return;
+                    }
+
+                    PlayerMoneyManager.instance.SubstractMoney(new Currency(0, 0, buyValue));
+
+                    GameManager.instance.player.inventoryManager.GetInventoryByName("Backpack").AddItem(slotData.itemData, 99);
+
+                    slotData.RemoveItem();
+                    UI_Manager.instance.inventoryUIByName["Vendor"].Refresh();
+                }
             }
         }
-
     }
 }

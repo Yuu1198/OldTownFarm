@@ -205,7 +205,7 @@ public class PlayerController : MonoBehaviour
 
     private void UseTool(InputAction.CallbackContext context)
     {
-        if (TileManager.instance != null)
+        if (TileManager.instance != null && !UI_Manager.instance.inventoryPanel.activeSelf && !UI_Manager.instance.vendorPanel.activeSelf)
         {
             Vector3Int targetTile = TileManager.instance.GetTargetTile(transform.position, facingDirection);
 

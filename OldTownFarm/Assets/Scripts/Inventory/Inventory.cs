@@ -56,6 +56,13 @@ public class Inventory
             this.maxAllowed = maxAllowed;
         }
 
+        public void AddItem(ItemData itemData, int maxAllowed, int numToAdd)
+        {
+            this.itemData = itemData;
+            count+=numToAdd;
+            this.maxAllowed = maxAllowed;
+        }
+
         public void RemoveItem() 
         {
             // Remove Item from Slot if at least one Item is in it
@@ -76,6 +83,7 @@ public class Inventory
     public Slot selectedSlot = null; // REFACTURE: make private with getter
 
     public bool sellInventory = false;
+    public bool buyInventory = false;
 
     public Inventory(int numSlots) 
     {
@@ -112,12 +120,16 @@ public class Inventory
 
     public void AddItem(ItemData item, int maxAllowed)
     {
+        AddItem(item, maxAllowed, 1);
+    }
+    public void AddItem(ItemData item, int maxAllowed, int numToAdd)
+    {
         // Find Slot with same type of Collectable
         foreach (Slot slot in slots)
         {
             if (slot.itemData != null && slot.itemData.itemName == item.itemName && slot.CanAddItem(item.itemName))
             {
-                slot.AddItem(item, maxAllowed);
+                slot.AddItem(item, maxAllowed, numToAdd);
                 return;
             }
         }
@@ -127,7 +139,7 @@ public class Inventory
         {
             if (slot.itemData == null)
             {
-                slot.AddItem(item, maxAllowed);
+                slot.AddItem(item, maxAllowed, numToAdd);
                 return;
             }
         }

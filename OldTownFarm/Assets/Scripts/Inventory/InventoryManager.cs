@@ -22,7 +22,7 @@ public class InventoryManager : MonoBehaviour
         backpack = new Inventory(backpackSlotCount);
         toolbar = new Inventory(toolbarSlotCount);
         vendor = new Inventory(vendorSlotCount);
-
+        vendor.buyInventory = true;
 
 
         inventoryByName.Add("Backpack", backpack);

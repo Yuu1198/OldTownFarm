@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Crop
   timePerGrowthStage: 10
   harvestItems:
-  - item: {fileID: 1109518836958464437, guid: 906ca7835ac919e46af6827a6f8479aa, type: 3}
+  - item: {fileID: 1109518836958464437, guid: 348aae2603c464e4fb09422119c626f0, type: 3}
     yield: 3
   - item: {fileID: 1109518836958464437, guid: 0e547adc1c093a741aa88c3f3867bc36, type: 3}
     yield: 3
