@@ -8,11 +8,23 @@ public class Vendor : MonoBehaviour
     private PlayerController player;
     DialogueData[] vendorDialogue;
 
+    public ItemData[] possibleItemsToBuy;
+
+    [SerializeField]
+    private Inventory vendorInventory;
+
     private void Start()
     {
+        // Fill Dialogue
         vendorDialogue = new DialogueData[2];
         vendorDialogue[0] = new DialogueData("Hello my old friend!!!! :]", string.Empty, string.Empty, null, null);
         vendorDialogue[1] = new DialogueData("Sell or buy????", "Yes", "No", OpenSellMenu, OpenBuyMenu);
+
+        // Fill Vendor Inventory
+        vendorInventory = GameManager.instance.player.inventoryManager.GetInventoryByName("Vendor");
+        vendorInventory.AddItem(possibleItemsToBuy[0], 1);
+        vendorInventory.AddItem(possibleItemsToBuy[1], 1);
+        vendorInventory.AddItem(possibleItemsToBuy[0], 1);
     }
 
     void OpenBuyMenu()

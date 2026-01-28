@@ -110,6 +110,29 @@ public class Inventory
         }
     }
 
+    public void AddItem(ItemData item, int maxAllowed)
+    {
+        // Find Slot with same type of Collectable
+        foreach (Slot slot in slots)
+        {
+            if (slot.itemData != null && slot.itemData.itemName == item.itemName && slot.CanAddItem(item.itemName))
+            {
+                slot.AddItem(item, maxAllowed);
+                return;
+            }
+        }
+        // No same type of Slot found
+        // Add Collectable to empty slot
+        foreach (Slot slot in slots)
+        {
+            if (slot.itemData == null)
+            {
+                slot.AddItem(item, maxAllowed);
+                return;
+            }
+        }
+    }
+
     public void Remove(int index) 
     {
         slots[index].RemoveItem();

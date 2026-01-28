@@ -23,6 +23,8 @@ public class InventoryManager : MonoBehaviour
         toolbar = new Inventory(toolbarSlotCount);
         vendor = new Inventory(vendorSlotCount);
 
+
+
         inventoryByName.Add("Backpack", backpack);
         inventoryByName.Add("Toolbar", toolbar);
         inventoryByName.Add("Vendor", vendor);
