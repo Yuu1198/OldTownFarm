@@ -32,6 +32,8 @@ public class DayNightCycle : MonoBehaviour
     public float maxDelay = 10f;
     public float flashIntensity = 8f;
     private float lightingTimer = 5f;
+
+    public bool timeStopped = false;
     
 
     public static DayNightCycle instance { get; private set; }
@@ -66,6 +68,11 @@ public class DayNightCycle : MonoBehaviour
 
     private void CalcTime()
     {
+        if (timeStopped)
+        {
+            return;
+        }
+
         mins += Time.fixedDeltaTime * tick;
 
         if (mins >= 60)

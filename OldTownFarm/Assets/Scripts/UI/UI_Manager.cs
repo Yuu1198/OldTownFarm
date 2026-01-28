@@ -25,8 +25,21 @@ public class UI_Manager : MonoBehaviour
 
     [SerializeField] private TextMeshProUGUI moneyText;
 
+    public static UI_Manager instance { get; private set; }
+
     private void Awake()
     {
+        // If there is an instance, and it's not me, delete myself.
+
+        if (instance != null && instance != this)
+        {
+            Destroy(this);
+        }
+        else
+        {
+            instance = this;
+        }
+
         playerControls = new PlayerInputActions();
 
         Initialize();
@@ -59,21 +72,31 @@ public class UI_Manager : MonoBehaviour
         dragOneItem.Disable();
     }
 
+    // Open inventory through keyboard input
     public void OpenInventory(InputAction.CallbackContext context)
+    {
+        OpenInventory(!inventoryPanel.activeSelf);
+    }
+
+    // Open inventory through not keyboard input
+    public void OpenInventory(bool open)
     {
         if (inventoryPanel != null)
         {
-            if (!inventoryPanel.activeSelf)
-            {
-                inventoryPanel.SetActive(true);
-                RefreshInventoryUI("Backpack");
-            }
-            else
-            {
-                inventoryPanel.SetActive(false);
-            }
+            DayNightCycle.instance.timeStopped = open;
+            inventoryPanel.SetActive(open);
+            RefreshInventoryUI("Backpack");
         }
     }
+
+    // Open inventory through vendor
+    public void OpenVendorInventory(bool sell)
+    {
+        OpenInventory(true);
+
+        inventoryUIByName["Backpack"].SetSellInv(sell);
+    }
+
 
     public void RefreshInventoryUI(string inventoryName)
     {

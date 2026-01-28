@@ -18,10 +18,18 @@ public class Vendor : MonoBehaviour
     void OpenBuyMenu()
     {
         Debug.Log("Hello this is the buy menu");
+
+        UI_Manager.instance.OpenVendorInventory(false);
+        Dialogue.instance.KillDialogue();
+
     }
+
     void OpenSellMenu()
     {
         Debug.Log("YOU WANT TO SELL???? I dont have money");
+
+        UI_Manager.instance.OpenVendorInventory(true);
+        Dialogue.instance.KillDialogue();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

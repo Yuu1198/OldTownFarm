@@ -78,6 +78,11 @@ public class Inventory_UI : MonoBehaviour
         CloseBin(); // Close Bin after dragged Item is deleted
     }
 
+    public void SetSellInv(bool sell)
+    {
+        inventory.sellInventory = sell;
+    }
+
     public void SlotBeginDrag(Slots_UI slot)
     {
         UI_Manager.draggedSlot = slot;

@@ -75,6 +75,8 @@ public class Inventory
     public List<Slot> slots = new List<Slot>();
     public Slot selectedSlot = null; // REFACTURE: make private with getter
 
+    public bool sellInventory = false;
+
     public Inventory(int numSlots) 
     {
         // Add slots to inventory

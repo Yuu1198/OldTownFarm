@@ -55,6 +55,9 @@ public class Dialogue : MonoBehaviour
 
     public void StartDialogue(DialogueData[] dialogueLines)
     {
+        UI_Manager.instance.OpenInventory(false);
+        DayNightCycle.instance.timeStopped = true;
+
         gameObject.SetActive(true);
         dialogueData = dialogueLines;
 
@@ -87,9 +90,17 @@ public class Dialogue : MonoBehaviour
             button2.GetComponentInChildren<TMP_Text>().text = dialogueData[index].buttonText2;
 
             if (dialogueData[index].buttonAction1 != null)
+            {
+                button1.onClick.RemoveAllListeners();
                 button1.onClick.AddListener(dialogueData[index].buttonAction1);
+            }
+                
             if (dialogueData[index].buttonAction2 != null)
+            {
+                button2.onClick.RemoveAllListeners();
                 button2.onClick.AddListener(dialogueData[index].buttonAction2);
+            }
+                
         }
     }
 
@@ -103,13 +114,14 @@ public class Dialogue : MonoBehaviour
         }
         else
         {
-            gameObject.SetActive(false);
+            KillDialogue();
         }
     }
 
-    public void OnButtonClick(bool button1clicked)
+    public void KillDialogue()
     {
-        Debug.Log((button1clicked ? "I" : "You") + " have been clicked!");
+        DayNightCycle.instance.timeStopped = false;
+        gameObject.SetActive(false);
     }
 }
 
