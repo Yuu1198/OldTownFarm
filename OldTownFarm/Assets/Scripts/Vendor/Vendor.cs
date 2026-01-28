@@ -19,7 +19,7 @@ public class Vendor : MonoBehaviour
     {
         Debug.Log("Hello this is the buy menu");
 
-        UI_Manager.instance.OpenVendorInventory(false);
+        UI_Manager.instance.VendorInteract(false);
         Dialogue.instance.KillDialogue();
 
     }
@@ -28,7 +28,7 @@ public class Vendor : MonoBehaviour
     {
         Debug.Log("YOU WANT TO SELL???? I dont have money");
 
-        UI_Manager.instance.OpenVendorInventory(true);
+        UI_Manager.instance.VendorInteract(true);
         Dialogue.instance.KillDialogue();
     }
 

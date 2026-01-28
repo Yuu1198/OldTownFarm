@@ -12,6 +12,7 @@ public class UI_Manager : MonoBehaviour
     public Dictionary<string, Inventory_UI> inventoryUIByName = new Dictionary<string, Inventory_UI>();
 
     public GameObject inventoryPanel;
+    public GameObject vendorPanel;
 
     public List<Inventory_UI> inventoryUIs;
 
@@ -75,11 +76,11 @@ public class UI_Manager : MonoBehaviour
     // Open inventory through keyboard input
     public void OpenInventory(InputAction.CallbackContext context)
     {
-        OpenInventory(!inventoryPanel.activeSelf);
+        OpenPlayerInventory(!inventoryPanel.activeSelf);
     }
 
-    // Open inventory through not keyboard input
-    public void OpenInventory(bool open)
+    // Open or close player inventory through not keyboard input
+    public void OpenPlayerInventory(bool open)
     {
         if (inventoryPanel != null)
         {
@@ -89,12 +90,30 @@ public class UI_Manager : MonoBehaviour
         }
     }
 
-    // Open inventory through vendor
-    public void OpenVendorInventory(bool sell)
+    // Open or close vendor inventory through not keyboard input
+    public void OpenVendorInventory(bool open)
     {
-        OpenInventory(true);
+        if (vendorPanel != null)
+        {
+            DayNightCycle.instance.timeStopped = open;
+            vendorPanel.SetActive(open);
+            RefreshInventoryUI("Vendor");
+        }
+    }
 
-        inventoryUIByName["Backpack"].SetSellInv(sell);
+    // Open inventory through vendor
+    public void VendorInteract(bool sell)
+    {
+        if (sell) // Open Player inventory for selling stuff
+        {
+            OpenPlayerInventory(true);
+            inventoryUIByName["Backpack"].SetSellInv(sell);
+        }
+        else // Open Vendor inventory for buying stuff
+        {
+            OpenVendorInventory(true);
+        }
+
     }
 
 

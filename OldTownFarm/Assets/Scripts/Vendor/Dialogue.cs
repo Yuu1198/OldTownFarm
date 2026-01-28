@@ -55,7 +55,7 @@ public class Dialogue : MonoBehaviour
 
     public void StartDialogue(DialogueData[] dialogueLines)
     {
-        UI_Manager.instance.OpenInventory(false);
+        UI_Manager.instance.OpenPlayerInventory(false);
         DayNightCycle.instance.timeStopped = true;
 
         gameObject.SetActive(true);
